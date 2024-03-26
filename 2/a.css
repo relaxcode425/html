@@ -21,7 +21,10 @@ ul{
 } */
 #izquierda{
     background-color:rgb(158, 147, 147);
-    /* padding: 20%; */
+    width: 20%;
+}
+#derecha{
+    width: 80%;
 }
 
 #a{
@@ -37,6 +40,3 @@ ul{
     background-color: rgb(234, 0, 255);
 }
 
-/* #derecha{
-    padding: 80%;
-} */
