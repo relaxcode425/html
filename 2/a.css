@@ -9,10 +9,34 @@
     background-color: black;
     width: 100%;
     height: 100vh;
-    /* viewport height */
     display: flex;
 }
 ul{
     text-align: center;
     list-style: none;
+    display: block;
 }
+/* ul li{
+    color
+} */
+#izquierda{
+    background-color:rgb(158, 147, 147);
+    /* padding: 20%; */
+}
+
+#a{
+    background-color: aqua;
+}
+#b{
+    background-color: rgb(255, 0, 153);
+}
+#c{
+    background-color: rgb(51, 255, 0);
+}
+#d{
+    background-color: rgb(234, 0, 255);
+}
+
+/* #derecha{
+    padding: 80%;
+} */
