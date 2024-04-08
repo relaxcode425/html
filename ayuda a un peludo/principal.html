@@ -64,58 +64,31 @@
     </header>
     <main>
         <!-- inicio carrusel -->
-        <div class="container-fluid">
-            <div class="row">
-                
-                <!-- inicio navbar -->
-                <nav class="navbar navbar-expand-lg bg-body-tertiary">
-                    <div class="container-fluid" style="background-color: rgba(252, 111, 68, 0.925);">
-                      <a class="navbar-brand" href="#"><img src="img/pata.png" width="45" alt=""></a>
-                      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                      </button>
-                      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                          <!-- <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                          </li> -->
-                          
-                          <!-- <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                          </li> -->
-                          <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                              Adopta
-                            </a>
-                            <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="#">Perros</a></li>
-                              <li><a class="dropdown-item" href="#">Gatos</a></li>
-                              <!-- <li><hr class="dropdown-divider"></li>
-                              <li><a class="dropdown-item" href="#">Something else here</a></li> -->
-                            </ul>
-                          </li>
-                          <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                              Nosotros
-                            </a>
-                            <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="#">Quienes somos</a></li>
-                              <li><a class="dropdown-item" href="#">Auspiciadores</a></li>
-                              <!-- <li><hr class="dropdown-divider"></li>
-                              <li><a class="dropdown-item" href="#">Something else here</a></li> -->
-                            </ul>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Contáctanos</a>
-                          </li>
-                        </ul>
-                       
-                      </div>
-                    </div>
-                  </nav>
-                <!-- fin nav bar -->
-
+        <div id="carouselExampleIndicators" class="carousel slide">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="https://media.tycsports.com/files/2023/11/10/644591/perros_862x485.webp" class="d-block w-100" alt="a">
             </div>
+            <div class="carousel-item">
+              <img src="https://img2.rtve.es/i/?w=1600&i=1618587961630.jpg" class="d-block w-100" alt="a">
+            </div>
+            <div class="carousel-item">
+              <img src="https://www.infobae.com/new-resizer/o17lQzJ-6vBq7iZ28wl7gXU2gao=/768x432/filters:format(webp):quality(85)/cloudfront-us-east-1.images.arcpublishing.com/infobae/DZIXE3BEA5CBVHP7MUWZWEMX64.jpg" class="d-block w-100" alt="a">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
         <!-- fin carrusel -->
     </main>
