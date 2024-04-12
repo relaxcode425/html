@@ -15,3 +15,6 @@ a{
 #foot{
     background-image: url(img/pie\ de\ pagina.png);
 }
+*{
+    font-family: "ROBOTO";
+}
