@@ -1,4 +1,7 @@
-footer h1,h2,h3,h4,h5,h6{
+#pie h1,h2,h3,h4,h5{
+    color: white;
+}
+#pie h6{
     color: white;
 }
 footer{
@@ -12,7 +15,7 @@ footer{
 a{
     text-decoration: none;
 }
-#foot{
+#pie{
     background-image: url(img/pie\ de\ pagina.png);
 }
 *{
