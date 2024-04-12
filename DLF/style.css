@@ -1,0 +1,17 @@
+footer h1,h2,h3,h4,h5,h6{
+    color: white;
+}
+footer{
+    
+    /* display: flex; */
+    height: 70vh;
+    width: 100%;
+    line-height: 1.3;
+    /* font-family: Menlo, monospace; */
+}
+a{
+    text-decoration: none;
+}
+#foot{
+    background-image: url(img/pie\ de\ pagina.png);
+}
