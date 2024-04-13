@@ -118,3 +118,24 @@ a{
 option{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
+
+.col h6{
+    font-weight: bold;
+}
+
+.option1{
+    width: 20%;
+    background-color:rgb(214, 210, 210);
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    border: 1px solid #B5B2B2;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 15px;
+    color: rgb(114, 114, 114);
+    text-align: left;
+}
+
+option1{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
