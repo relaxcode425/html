@@ -61,18 +61,19 @@ a{
     margin: auto;
     margin-top: 100px;
     border-radius: 4px;
-    font-family: "ROBOTO";
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: rgb(114, 114, 114);
     text-align: center;
     font-size: 12px;
     box-shadow: 7px 13px 37px #000;
+    margin-bottom: 30px;
 }
 
 .form-register h4{
     font-size: 30px;
     margin-bottom: 20px;
     color: black;
-    font-family: "ROBOTO";
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: bold;
     text-align: center;
 }
@@ -84,7 +85,7 @@ a{
     border-radius: 4px;
     margin-bottom: 16px;
     border: 1px solid #B5B2B2;
-    font-family: "ROBOTO";
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 15px;
     color: black;
 }
@@ -97,4 +98,5 @@ a{
     color: white;
     margin: 16px 0;
     font-size: 16px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
