@@ -1,4 +1,16 @@
-#pie h1,h2,h3,h4,h5{
+#pie h1{
+    color: white;
+}
+#pie h2{
+    color: white;
+}
+#pie h3{
+    color: white;
+}
+#pie h4{
+    color: white;
+}
+#pie h5{
     color: white;
 }
 #pie h6{
@@ -30,4 +42,7 @@ a{
     flex-direction: column; */
     
     background-image: url(img/pie\ de\ pagina.png);
+}
+.titulo{
+    color: black;
 }
