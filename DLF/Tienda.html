@@ -16,6 +16,20 @@
         border-color: black;
         border-width: 5px;
       }
+      .categorias{
+        width: 400px;
+        background-color: rgb(255, 255, 255);
+        padding: 30px;
+        margin: auto;
+        /* margin-top: 70px; */
+        border-radius: 4px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        color: rgb(114, 114, 114);
+        text-align: center;
+        font-size: 12px;
+        /* box-shadow: 7px 13px 37px #000; */
+        /* margin-bottom: 30px; */
+      }
     </style>
 </head>
 <body>
@@ -124,29 +138,19 @@
           </div>
           <div class="col me-auto d-flex">
             <p style="padding-right: 50px;">Ordenar por:         </p>
-            <p>AAAAAAAAA</p>
+          
+            <select class="option" name="bicicleta" id="bicicleta">
+              <option value="Fecha">Fecha</option>
+              <option value="Precio">Precio</option>
+              <option value="Oferta">Oferta</option>
+            </select>
           </div>
         </div>
         <div class="row">
           <div class="col">
-            <b><h6>Categorías</h6></b>
-            <ul id="lista">
-              <li>
-                <h6>Bicicletas</h6>
-              </li>
-              <li>
-                <h6>Indumentaria</h6>
-              </li>
-              <li>
-                <h6>Accesorios</h6>
-              </li>
-              <li>
-                <h6>Componentes</h6>
-              </li>
-              <li>
-                <h6>Bolsos</h6>
-              </li>
-            </ul>
+            <section class="categorias">
+              <b><h6>Categorías</h6></b>
+            </section>
           </div>
           <div class="col">
 
