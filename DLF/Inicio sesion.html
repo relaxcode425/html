@@ -4,8 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/funciones.js"></script>
 </head>
 <body>
-    
+    <div class="container-fluid">
+        <div class="row">
+            <form action="" method="POST" class="col-md-4 mx-auto shadow-lg text-center mt-3 p-5 ">
+                <h3>Login</h3>
+                <div class="form-floating col-6 mx-auto mb-2">
+                    <input type="text" class="form-control" name="Nombre" id="Nombre" placeholder="Ingrese usuario">
+                    <label for="Nombre">Nombre completo</label>
+                </div>
+                <div class="form-floating col-6 mx-auto mb-2">
+                    <input type="text" class="form-control" name="rut" id="rut" placeholder="Ingrese rut">
+                    <label for="rut">Rut</label>
+                </div>
+                
+                
+                <div class="form-floating col-6 mx-auto mb-2">
+                     <input type="email" class="form-control" name="mail" id="mail" placeholder="Ingrese mail">
+                     <label for="mail">Mail</label>
+                </div> 
+                <div id="resultado"> </div>
+                <div id="resultado2"></div>
+                 
+                <div class="form-floating col-6 mx-auto">
+                    <input type="submit" value="Ingresar"  class="btn-outline-primary" onclick="validar(); validarmail();">
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
