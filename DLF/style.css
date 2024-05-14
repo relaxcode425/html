@@ -231,3 +231,15 @@ option1{
     text-align: center;
 }
 
+#login{
+    margin-left: 50%;
+    margin-top: 10%;
+    color: #24262B;
+    transition: all .5s ease;
+}
+
+#carrito{
+    margin-top: 10%;
+    color: #24262B;
+    transition: all .5s ease;
+}
