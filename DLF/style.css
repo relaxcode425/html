@@ -249,6 +249,12 @@ option1{
     transition: all .5s ease;
 }
 
-.d-flex{
-    color: #24262B;
+.dropdown-menu li {
+    font-size: 18px;
+    font-family: sans-serif;
+    background-color: #24262B;
+}
+
+.dropdown-item {
+    color: #FFFFFF;
 }
