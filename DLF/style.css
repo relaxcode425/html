@@ -321,8 +321,7 @@ option1{
 }
 
 .body_tienda{
-    width: 100%;
-    padding: 20px;
+    border: none;
 }
 
 .col-2 {
