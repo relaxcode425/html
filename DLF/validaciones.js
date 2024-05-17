@@ -16,8 +16,11 @@ $(document).ready(function(){
                email: true
            },
            numero: {
-               required: true,
-               digits: true
+            required: true,
+            digits: true,
+            minlength: 9,
+            maxlength: 9
+
            },
            bicicleta: {
                required: true
@@ -44,7 +47,9 @@ $(document).ready(function(){
            bicicleta: "Por favor selecciona un tipo de bicicleta",
            talla: {
                required: "Por favor ingresa una talla",
-               digits: "Por favor ingresa solo dígitos"
+               digits: "Por favor ingresa solo dígitos",
+               minlength: "El número de contacto debe tener 9 dígitos",
+               maxlength:"El número de contacto debe tener 9 dígitos"
            },
            fecha: "Por favor ingresa una fecha válida"
        },
