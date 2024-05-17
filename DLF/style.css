@@ -364,3 +364,34 @@ h6 {
     font-size: 16px;
     font-weight: bold;
 }
+
+.product_rep {
+    box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* add some gap between image and text */
+    padding: 20px; /* add some padding to the bottom of the text */
+  }
+
+  .product_img_rep {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    object-fit: contain;
+  }
+
+  .product_desc_rep {
+    text-align: center;
+    padding: 20px 0px;
+  }
+  
+  .product_desc_rep h3 {
+    font-size: 24px;
+    padding: 10px 0px;
+  }
+  
+  .product_desc_rep p {
+    font-size: 18px;
+  }
