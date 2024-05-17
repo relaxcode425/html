@@ -42,14 +42,14 @@ $(document).ready(function(){
            correo: "Por favor ingresa un correo válido",
            numero: {
                required: "Por favor ingresa un número de contacto",
-               digits: "Por favor ingresa solo dígitos"
-           },
+               digits: "Por favor ingresa solo dígitos",
+               minlength: "El número de contacto debe tener 9 dígitos",
+               maxlength:"El número de contacto debe tener 9 dígitos"
+            },
            bicicleta: "Por favor selecciona un tipo de bicicleta",
            talla: {
                required: "Por favor ingresa una talla",
                digits: "Por favor ingresa solo dígitos",
-               minlength: "El número de contacto debe tener 9 dígitos",
-               maxlength:"El número de contacto debe tener 9 dígitos"
            },
            fecha: "Por favor ingresa una fecha válida"
        },
