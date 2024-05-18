@@ -216,19 +216,17 @@ margin-top: 5%;
     color: #24262B;
     transition: all .5s ease;
     margin-top: 10%;}
-/*  #login{
+
+    /*  #login{
     margin-left: 50%;
     margin-top: 10%;
     color: #24262B;
     transition: all .5s ease;
 }*/
 
-#carrito{
+.d-flex{
     margin-top: 10%;
-    color: #24262B;
-    transition: all .5s ease;
 }
-
 .dropdown-menu li {
     font-size: 18px;
     font-family: sans-serif;
