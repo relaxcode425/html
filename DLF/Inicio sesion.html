@@ -3,38 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Inicio</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/funciones.js"></script>
 </head>
 <body>
     <div class="container-fluid">
         <div class="row">
-            <form action="" method="POST" class="col-md-4 mx-auto shadow-lg text-center mt-3 p-5 ">
+            <form action="" id="login" method="POST" class="col-md-4 mx-auto shadow-lg text-center mt-3 p-5 ">
                 <h3>Login</h3>
                 <div class="form-floating col-6 mx-auto mb-2">
-                    <input type="text" class="form-control" name="Nombre" id="Nombre" placeholder="Ingrese usuario">
-                    <label for="Nombre">Nombre completo</label>
-                </div>
+                    <input type="email" class="form-control" name="mail" id="mail" placeholder="Ingrese mail">
+                    <label for="mail">Mail</label>
+               </div>
+
                 <div class="form-floating col-6 mx-auto mb-2">
-                    <input type="text" class="form-control" name="rut" id="rut" placeholder="Ingrese rut">
-                    <label for="rut">Rut</label>
+                    <input type="password" class="form-control" name="pass" id="pass" placeholder="Ingrese contraseña">
+                    <label for="pass">Contraseña</label>
                 </div>
-                
-                
-                <div class="form-floating col-6 mx-auto mb-2">
-                     <input type="email" class="form-control" name="mail" id="mail" placeholder="Ingrese mail">
-                     <label for="mail">Mail</label>
-                </div> 
-                <div id="resultado"> </div>
+
+                <div id="resultado"></div>
                 <div id="resultado2"></div>
                  
                 <div class="form-floating col-6 mx-auto">
-                    <input type="submit" value="Ingresar"  class="btn btn-dark" onclick="validar(); validarmail();">
+                    <input type="submit" value="Ingresar" class="btn btn-dark" onclick="validar(); validarmail();">
+                    <input type="button" value="Registrarse" class="btn btn-dark" onclick="location.href='Registro.html'" name="Registrarse">
+                    <br><br>
+                    <input type="button" value="volver atrás" class="btn btn-dark" onclick="history.back()" name="volver atrás">
                 </div>
             </form>
         </div>
     </div>
     <script src="js/bootstrap.bundle.min.js"></script>
 </body>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
+<script src="validasesion.js"></script>
 </html>
