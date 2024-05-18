@@ -3,37 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
+    <title>Registro</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <script src="js/funciones.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <form action="" id="login" method="POST" class="col-md-4 mx-auto shadow-lg text-center mt-3 p-5 ">
-                <h3>Login</h3>
-                <div class="form-floating col-6 mx-auto mb-2">
-                    <input type="email" class="form-control" name="mail" id="mail" placeholder="Ingrese mail">
-                    <label for="mail">Mail</label>
-               </div>
-
-                <div class="form-floating col-6 mx-auto mb-2">
-                    <input type="password" class="form-control" name="pass" id="pass" placeholder="Ingrese contraseña">
-                    <label for="pass">Contraseña</label>
-                </div>
-
-                <div id="resultado"></div>
-                <div id="resultado2"></div>
-                 
-                <div class="form-floating col-6 mx-auto">
-                    <input type="submit" value="Ingresar" class="btn btn-dark" onclick="validar(); validarmail();">
-                    <input type="button" value="Registrarse" class="btn btn-dark" onclick="location.href='Registro.html'" name="Registrarse">
-                    <br><br>
-                    <input type="button" value="volver atrás" class="btn btn-dark" onclick="history.back()" name="volver atrás">
-                </div>
-            </form>
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+                <form action="" id="login" method="POST" class="col-md-4 mx-auto shadow-lg text-center mt-3 p-5 ">
+                    <h3>Login</h3>
+                    <div class="form-floating col-6 mx-auto mb-2">
+                        <input type="email" class="form-control" name="usuario" id="usuario" placeholder="Ingrese usuario">
+                        <label for="usuario">Usuario</label>
+                   </div>
+    
+                    <div class="form-floating col-6 mx-auto mb-2">
+                        <input type="password" class="form-control" name="pass" id="pass" placeholder="Ingrese contraseña">
+                        <label for="pass">Contraseña</label>
+                    </div>
+    
+                    <div id="resultado"></div>
+                    <div id="resultado2"></div>
+                     
+                    <div class="form-floating col-6 mx-auto">
+                        <input type="submit" value="Ingresar" class="btn btn-dark" onclick="validar(); validarmail();">
+                        <input type="button" value="Registrarse" class="btn btn-dark" onclick="location.href='Registro.html'" name="Registrarse">
+                        <br><br>
+                        <input type="button" value="volver atrás" class="btn btn-dark" onclick="history.back()" name="volver atrás">
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-row">
+                <div class="footer-links">
+                    <h4>Información</h4>
+                    <ul>
+                      <li><a href="Nosotros.html">Nosotros</a></li> 
+                      <li><a href="#">Contáctanos</a></li> 
+                      <li><a href="#">Centro de ayuda</a></li> 
+                      <li><a href="#">Devoluciones y cambios</a></li> 
+                    </ul>
+                </div>
+                    <div class="footer-links">
+                        <h4>Nuestras tiendas</h4>    
+                        <ul> 
+                          <li><a href="https://maps.app.goo.gl/JoqnmWnW4t3jaVw78">Mall Costanera Center</a></li> 
+                          <li>Av. Andrés Bello 2425</li>
+                          <li>Horarios:</li>
+                          <li>Lun-Dom: 10:00 - 20:30</li> 
+                        </ul>
+                    </div>  
+                        <div class="footer-links">
+                          <ul> 
+                            <br><br><br>
+                            <li><a href="https://maps.app.goo.gl/hT9Bt4z6BZQQhBT3A">Mall Florida Center</a></li> 
+                            <li>Av. Vicuña Mackenna Ote. 6100</li>
+                            <li>Horarios:</li>
+                            <li>Lun-Dom: 10:00 - 20:30</li> 
+                          </ul>
+                      </div>
+                      <div class="footer-links">
+                        <h4>Síguenos</h4>
+                        <div class="social-link">
+                          <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                          <a href="#"><i class="fab fa-instagram"></i></a>
+                          <a href="#"><i class="fa-regular fa-envelope"></i></a>
+                        </div>
+                      </div>
+            </div> 
+            <div class="footer-row">
+                <h6>© DONDE LA FLACA TODOS LOS DERECHOS RESERVADOS</h6>
+            </div>
+        </div>
+    </footer>
     <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
