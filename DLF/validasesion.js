@@ -24,7 +24,9 @@ $.validator.setDefaults({
                 contieneMayuscula: "La contraseña debe contener al menos una letra mayúscula",
                 contieneNumero: "La contraseña debe contener al menos un número"
             },
-            usuario: "Por favor ingresa un usuario válido"
+            usuario: {
+                required: "Por favor ingresa un usuario válido"
+            }
         },
         errorElement: "em",
         errorPlacement: function (error, element) {
@@ -57,7 +59,8 @@ $.validator.setDefaults({
                 required: true
             },
             mail: {
-                required: true
+                required: true,
+                email: true
             },
             pass: {
                 required: true,
@@ -74,8 +77,13 @@ $.validator.setDefaults({
             }
         },
         messages: {           
-            usuario: "Por favor ingresa un usuario válido",
-            mail: "Por favor ingresa un correo válido",
+            usuario: {
+                required: "Por favor ingresa un usuario válido"
+            },
+            mail: {
+                required: "Por favor ingresa un correo",
+                email: "Por favor ingresa un correo válido"
+            },
             pass: {
                 required: "Ingresa tu contraseña",
                 minlength: "Tu contraseña debe tener minimo 8 caracteres",
