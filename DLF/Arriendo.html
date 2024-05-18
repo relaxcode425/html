@@ -105,52 +105,71 @@
     <div class="container">
       <div class="panel panel-default">
          <div class="panel-heading">
-            <h3 class="panel-title">Formulario de Arriendo</h3>
+            <h3 class="panel-title">Solicitud de arriendo</h3>
          </div>
          <div class="panel-body">           
             <form class="form-horizontal" id="rentalForm">
                 <div class="form-group">
-                    <label for="nombre" class="control-label">Nombre y Apellido</label>
-                    <input type="text" id="nombre" name="nombre" class="form-control" placeholder="NOMBRE Y APELLIDO">
+                    <label for="nombre" class="col-sm-2 control-label">Nombre y apellido</label>
+                    <div class="col-sm-10">
+                        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="NOMBRE Y APELLIDO">
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="correo" class="control-label">Correo electrónico</label>
-                    <input type="email" id="correo" name="correo" class="form-control" placeholder="CORREO ELECTRÓNICO">
+                    <label for="correo" class="col-sm-2 control-label">Correo electrónico</label>
+                    <div class="col-sm-10">
+                        <input type="email" id="correo" name="correo" class="form-control" placeholder="CORREO ELECTRÓNICO">
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="numero" class="control-label">Número de contacto</label>
-                    <input type="text" id="numero" name="numero" class="form-control" placeholder="NÚMERO DE CONTACTO">
+                    <label for="numero" class="col-sm-2 control-label">Número de contacto</label>
+                    <div class="col-sm-10">
+                        <input type="number" id="numero" name="numero" class="form-control" placeholder="NÚMERO DE CONTACTO">
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="bicicleta" class="control-label">Tipo de bicicleta</label>
-                    <select id="bicicleta" name="bicicleta" class="form-control option">
-                        <option value="">TIPO DE BICICLETA</option>
-                        <option value="Urbana">URBANA</option>
-                        <option value="Montaña">MONTAÑA</option>
-                        <option value="Carretera">CARRETERA</option>
-                    </select>
+                    <label for="bicicleta" class="col-sm-2 control-label">Tipo de bicicleta</label>
+                    <div class="col-sm-10">
+                        <select id="bicicleta" name="bicicleta" class="form-control">
+                            <option value="">TIPO DE BICICLETA</option>
+                            <option value="urbana">URBANA</option>
+                            <option value="montana">MONTAÑA</option>
+                            <option value="carretera">CARRETERA</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="talla" class="control-label">Talla</label>
-                    <input type="text" id="talla" name="talla" class="form-control" placeholder="TALLA">
+                    <label for="talla" class="col-sm-2 control-label">Talla</label>
+                    <div class="col-sm-10">
+                        <input type="number" id="talla" name="talla" class="form-control" placeholder="TALLA">
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="fecha" class="control-label">Fecha</label>
-                    <input type="date" id="fecha" name="fecha" class="form-control" placeholder="RANGO DE FECHAS">
+                    <label for="fecha" class="col-sm-2 control-label">Rango de fechas</label>
+                    <div class="col-sm-10">
+                        <input type="date" id="fecha" name="fecha" class="form-control" placeholder="RANGO DE FECHAS">
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <input type="submit" class="btn btn-primary botons" value="ENVIAR RESPUESTA">
+                    <div class="col-sm-offset-2 col-sm-10">
+                      <button class="btn btn-dark" type="submit">Enviar formulario</button>
+                    </div>
                 </div>
             </form>
          </div>
       </div>
    </div>
+   <!-- jQuery  -->
+   <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
+   <script src="validaciones.js"></script>
   </main>
     <!-- -------------------------------------------------------------------- -->
     <footer class="footer">
@@ -197,14 +216,9 @@
           </div>
       </div>
     </footer>
-    <!-- jQuery  -->
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
-    <!-- <script src="validaciones.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="validaciones.js"></script>
+    <script src="js/validaciones.js"></script>
 
 </body>
 </html>
