@@ -190,12 +190,38 @@ option1{
     text-align: center;
 }
 
-#login{
+.icon-container1 {
+    width: 40px;
+margin-top: 5%;
+margin-left: 50%;
+
+}
+
+.icon-container2 {
+    width: 40px;
+margin-top: 5%;
+
+}
+
+.icon {
+    font-size: 24px;
+    color: #24262B;
+    transition: all .5s ease;
+    margin-top: 10%;
+    margin-left: 50%;
+}
+
+#carrito{
+    font-size: 24px;
+    color: #24262B;
+    transition: all .5s ease;
+    margin-top: 10%;}
+/*  #login{
     margin-left: 50%;
     margin-top: 10%;
     color: #24262B;
     transition: all .5s ease;
-}
+}*/
 
 #carrito{
     margin-top: 10%;
