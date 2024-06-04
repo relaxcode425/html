@@ -11,97 +11,7 @@
 </head>
 <body>
     <!-- -------------------------------------------------------------------- -->
-    <header>
-      <div class="container-fluid">
-          <div class="row">
-
-              <!-- icono izquierda -->
-              <div class="col-4">
-                  <a href="Principal.html"><img class="d-block mx-auto" src="{% static 'img/image.png' %}" width="130" alt=""></a>
-              </div>
-              <!-- fin icono izquierda -->
-
-              <!-- barra de busqueda -->
-              <div class="col-4">
-                  <form class="d-flex" role="search">
-                      <input class="form-control me-2" type="search" placeholder="¿Qué estás buscando?" aria-label="Search">
-                      <button class="btn btn-dark" type="submit">Buscar</button>
-                    </form>
-              </div>
-              <!-- fin barra de busqueda -->
-            <!-- Icono inicio de sesión -->
-            <div class="col-2" >
-              <div class="icon-container1">
-                <a href="Inicio sesion.html"><i id="login" class="fa-solid fa-user icon"></i></a>
-            </div>
-            </div>
-              <!-- icono derecha -->
-            <div class="col-2">
-              <div class="icon-container2">
-              <a href="Tienda.html"><i id="carrito" class="fa-solid fa-cart-shopping"></i></a>
-            </div>
-            
-            <!-- fin icono derecha -->
-
-          </div>
-          <div class="row">
-              
-              <!-- inicio navbar -->
-              <nav class="navbar navbar-expand-lg bg-body-tertiary">
-                <div class="container-fluid bg-dark bg-opacity-100" >
-                  <!-- <a class="navbar-brand" href="#"><img src="img/pata.png" width="45" alt=""></a> -->
-                  
-                  <button style="background-color: rgb(0, 0, 0); border-color: rgb(68, 68, 68);" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-                  
-                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                      <!-- <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                      </li> -->
-                      
-                      <!-- <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                      </li> -->
-                      <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" style="color: white;" href="Principal.html">INICIO</a>
-                      </li>
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="Principal.html" style="color: white;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          TIENDA
-                        </a>
-                        <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="Tienda.html">Bicicletas</a></li>
-                          <li><a class="dropdown-item" href="Tienda.html">Indumentaria</a></li>
-                          <!-- <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item" href="#">Something else here</a></li> -->
-                        </ul>
-                      </li>
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" style="color: white;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          TALLER
-                        </a>
-                        <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="Mantencion.html">Mantención</a></li>
-                          <li><a class="dropdown-item" href="#">Reparación</a></li>
-                          <!-- <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item" href="#">Something else here</a></li> -->
-                        </ul>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" style="color: white;" href="Arriendo.html">ARRIENDO</a>
-                      </li>
-                    </ul>
-                    
-                  </div>
-                </div>
-              </nav>
-              <!-- fin nav bar -->
-
-          </div>
-      </div>
-  </header>
+    {% include 'base/header.html' %}
     <!-- -------------------------------------------------------------------- -->
     <main>
       <div class="container-fluid">
@@ -310,50 +220,7 @@
     <br />
     <br />
     <!-- -------------------------------------------------------------------- -->
-    <footer class="footer">
-      <div class="container">
-          <div class="footer-row">
-              <div class="footer-links">
-                  <h4>Información</h4>
-                  <ul>
-                    <li><a href="Nosotros.html">Nosotros</a></li> 
-                    <li><a href="#">Contáctanos</a></li> 
-                    <li><a href="#">Centro de ayuda</a></li> 
-                    <li><a href="#">Devoluciones y cambios</a></li> 
-                  </ul>
-              </div>
-                  <div class="footer-links">
-                      <h4>Nuestras tiendas</h4>    
-                      <ul> 
-                        <li><a href="https://maps.app.goo.gl/JoqnmWnW4t3jaVw78">Mall Costanera Center</a></li> 
-                        <li>Av. Andrés Bello 2425</li>
-                        <li>Horarios:</li>
-                        <li>Lun-Dom: 10:00 - 20:30</li> 
-                      </ul>
-                  </div>  
-                      <div class="footer-links">
-                        <ul> 
-                          <br><br><br>
-                          <li><a href="https://maps.app.goo.gl/hT9Bt4z6BZQQhBT3A">Mall Florida Center</a></li> 
-                          <li>Av. Vicuña Mackenna Ote. 6100</li>
-                          <li>Horarios:</li>
-                          <li>Lun-Dom: 10:00 - 20:30</li> 
-                        </ul>
-                    </div>
-                    <div class="footer-links">
-                      <h4>Síguenos</h4>
-                      <div class="social-link">
-                        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-                        <a href="https://www.instagram.com/carla.kookie/"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fa-regular fa-envelope"></i></a>
-                      </div>
-                    </div>
-          </div> 
-          <div class="footer-row">
-              <h6>© DONDE LA FLACA TODOS LOS DERECHOS RESERVADOS :P</h6>
-          </div>
-      </div>
-    </footer>
+    {% include 'base/footer.html' %}
     <!-- -------------------------------------------------------------------- -->
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 </body>
