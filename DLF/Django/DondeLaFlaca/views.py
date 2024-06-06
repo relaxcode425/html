@@ -4,3 +4,7 @@ from django.shortcuts import render
 def Principal(request):
     context={}
     return render(request, 'pages/Principal.html', context)
+
+def Arriendo(request):
+    context={}
+    return render(request, 'pages/Arriendo.html', context)
