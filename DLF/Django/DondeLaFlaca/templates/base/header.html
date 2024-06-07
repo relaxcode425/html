@@ -53,15 +53,15 @@
                       <a class="nav-link" href="#">Link</a>
                     </li> -->
                     <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" style="color: white;" href="Principal.html">INICIO</a>
+                      <a class="nav-link active" aria-current="page" style="color: white;" href="{% url 'Principal' %}">INICIO</a>
                     </li>
                     <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="Principal.html" style="color: white;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <a class="nav-link dropdown-toggle" href="" style="color: white;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         TIENDA
                       </a>
                       <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="Tienda.html">Bicicletas</a></li>
-                        <li><a class="dropdown-item" href="Tienda.html">Indumentaria</a></li>
+                        <li><a class="dropdown-item" href="{% url 'tienda' %}">Bicicletas</a></li>
+                        <li><a class="dropdown-item" href="{% url 'tienda' %}">Indumentaria</a></li>
                         <!-- <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="#">Something else here</a></li> -->
                       </ul>
@@ -71,8 +71,8 @@
                         TALLER
                       </a>
                       <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="Mantencion.html">Mantención</a></li>
-                        <li><a class="dropdown-item" href="#">Reparación</a></li>
+                        <li><a class="dropdown-item" href="{% url 'mantencion' %}">Mantención</a></li>
+                        <li><a class="dropdown-item" href="{% url 'mantencion' %}">Reparación</a></li>
                         <!-- <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="#">Something else here</a></li> -->
                       </ul>
