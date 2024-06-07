@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DondeLaFlaca</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <style>
+      ul{
+        list-style: none;
+      }
+      #borde{
+        width: 300px;
+        height: 150px;
+        border-color: black;
+        border-width: 5px;
+      }
+      .categorias{
+        width: 400px;
+        background-color: rgb(255, 255, 255);
+        padding: 30px;
+        margin: auto;
+        /* margin-top: 70px; */
+        border-radius: 4px;
+        border-color: black;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        color: rgb(114, 114, 114);
+        text-align: center;
+        font-size: 12px;
+        /* box-shadow: 7px 13px 37px #000; */
+        /* margin-bottom: 30px; */
+      }
+    </style>
+</head>
+<body class="body_tienda">
+    <!-- -------------------------------------------------------------------- -->
+    {% include 'base/header.html' %}
+    <!-- -------------------------------------------------------------------- -->
+    <main>
+      <div class="container-fluid">
+        <div class="row">
+          <p style="color: black; opacity: 50%;">Inicio/Tienda</p>
+        </div>
+        <hr>
+        <div class="row" id="titulo">
+          <h2>TIENDA</h2>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col ms-auto">
+            <b><h6>120 Producto(s)</h6></b>
+          </div>
+          <div class="col me-auto d-flex">
+            <p style="padding-right: 100px;">Ordenar por:         </p>
+          
+            <select class="option1" name="bicicleta" id="bicicleta">
+              <option value="Fecha">Fecha</option>
+              <option value="Precio">Precio</option>
+              <option value="Oferta">Oferta</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2 col-lg-2 col-xl-2" >
+              <div class="border border-secondary">
+                <b><h6>Categorías</h6></b>
+                  <select name="bici" id="bici" class="option">
+                    <option value="1">Bicicletas</option>
+                      <option value="2">Pista</option>
+                  </select>
+                  <select name="indumentaria" id="indumentaria" class="option">
+                    <option value="1">Indumentaria</option>
+                      <option value="2">Casco</option>
+                      <option value="3">Tricota</option>
+                      <option value="4">Lentes</option>
+                      <option value="5">Guantes</option>
+                  </select>
+                  <select name="accesorios" id="accesorios" class="option">
+                    <option value="1">Accesorios</option>
+                      <option value="2">Luces</option>
+                      <option value="3">Stickers</option>
+                  </select>
+                  <select name="componentes" id="componentes" class="option">
+                    <option value="1">Componentes</option>
+                  </select>
+                  <select name="bolsos" id="bolsos" class="option">
+                    <option value="1">Bolsos</option>
+                  </select>
+              </div>
+          </div>
+          <div class="col-md-10 col-lg-10 col-xl-10">
+            <div class="row">
+              <!-- prod -->
+              <div class="main_container">
+                <div class="product">
+                    <img src="{% static 'img/bici2.jpg' %}" alt="">
+                    <div class="product_desc">
+                        <h3>Titulo bici pa cachar</h3>
+                        <p>$300.000</p>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="{% static 'img/bici4.jpg' %}" alt="">
+                    <div class="product_desc">
+                        <h3>Titulo bici pa cachar</h3>
+                        <p>$300.000</p>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="{% static 'img/bici5.jpg' %}" alt="">
+                    <div class="product_desc">
+                        <h3>Titulo bici pa cachar</h3>
+                        <p>$300.000</p>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="{% static 'img/bici6.jpg' %}" alt="">
+                    <div class="product_desc">
+                        <h3>Titulo bici pa cachar</h3>
+                        <p>$300.000</p>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="{% static 'img/bici7.jpg' %}" alt="">
+                    <div class="product_desc">
+                        <h3>Titulo bici pa cachar</h3>
+                        <p>$300.000</p>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="{% static 'img/bici8.jpg' %}" alt="">
+                    <div class="product_desc">
+                        <h3>Titulo bici pa cachar</h3>
+                        <p>$300.000</p>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="{% static 'img/bici9.jpg' %}" alt="">
+                    <div class="product_desc">
+                        <h3>Titulo bici pa cachar</h3>
+                        <p>$300.000</p>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="{% static 'img/bici10.jpg' %}" alt="">
+                    <div class="product_desc">
+                        <h3>Titulo bici pa cachar</h3>
+                        <p>$300.000</p>
+                    </div>
+                </div>
+            </div>
+              <!-- fin prod -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <br>
+    </main>
+    <!-- -------------------------------------------------------------------- -->
+     {% include 'base/footer.html' %}
+    <!-- -------------------------------------------------------------------- -->
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

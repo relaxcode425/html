@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DondeLaFlaca</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+<body>
+    <!-- -------------------------------------------------------------------- -->
+    {% include 'base/header.html' %} 
+    <!-- -------------------------------------------------------------------- -->    
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+              <p style="color: black; opacity: 50%;">Inicio/Mantención</p>
+            </div>
+            <hr>
+            <div class="row" id="titulo">
+              <h2>Mantención</h2>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col ms-auto">
+                <b><h6>Servicios disponibles</h6></b>
+              </div>
+              <div class="col me-auto d-flex">
+                <p style="padding-right: 100px;">Ordenar por:         </p>
+              
+                <select class="option1" name="bicicleta" id="bicicleta">
+                  <option value="Fecha">Fecha</option>
+                  <option value="Precio">Precio</option>
+                  <option value="Oferta">Oferta</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 col-lg-2 col-xl-2" >
+                  <div class="border border-secondary">
+                    <b><h6>Categorías</h6></b>
+                      <select name="mantencion" id="mantencion" class="option">
+                        <option value="1">Mantención</option>
+                        <option value="2">Revisión</option>
+                      </select>
+                      <select name="ajustes" id="ajustes" class="option">
+                        <option value="1">Ajustes</option>
+                      </select>
+                      <select name="instalacion_y_armado" id="inst_y_arm" class="option">
+                        <option value="1">Instalación y armado</option>
+                        <option value="2">Armado completo</option>
+                        <option value="3">Instalación de componentes</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="col-md-10 col-lg-10 col-xl-10">
+                <div class="row">
+                  <!-- prod -->
+                  <div class="main_container">
+                    <div class="product_rep">
+                        <img src="{% static 'img/Armado bicicletas.jpg' %}" alt="">
+                        <div class="product_desc_rep">
+                            <h3>Armado de Bicicletas</h3>
+                            <p>$25.000</p>
+                        </div>
+                    </div>
+                    <div class="product_rep">
+                        <img src="{% static 'img/cambio-camara-de-aire-bicicleta.jpeg' %}" alt="">
+                        <div class="product_desc">
+                            <h3>Cambio de camara</h3>
+                            <p>$4.000</p>
+                        </div>
+                    </div>
+                    <div class="product_rep">
+                        <img src="{% static 'img/Mantencion basica.jpeg' %}" alt="">
+                        <div class="product_desc_rep">
+                            <h3>Mantencion Básica</h3>
+                            <p>$38.000</p>
+                        </div>
+                    </div>
+                    <div class="product_rep">
+                        <img src="{% static 'img/Mantencion completa.jpg' %}" alt="">
+                        <div class="product_desc_rep">
+                            <h3>Mantencion completa</h3>
+                            <p>$55.000</p>
+                        </div>
+                    </div>
+                    <div class="product_rep">
+                        <img src="{% static 'img/regulador frenos.jpg' %}" alt="">
+                        <div class="product_desc_rep">
+                            <h3>Regulación de frenos</h3>
+                            <p>$7.000</p>
+                        </div>
+                    </div>
+                    <div class="product_rep">
+                        <img src="{% static 'img/Lavado.jpg' %}" alt="">
+                        <div class="product_desc_rep">
+                            <h3>Lavado</h3>
+                            <p>$25.000</p>
+                        </div>
+                    </div>
+                </div>
+                  <!-- fin prod -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+          <br>
+    </main>
+    <br />
+    <br />
+    <!-- -------------------------------------------------------------------- -->
+    {% include 'base/footer.html' %}
+    <!-- -------------------------------------------------------------------- -->
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
