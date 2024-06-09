@@ -18,69 +18,50 @@
     {% include 'base/header.html' %}
     <!-- -------------------------------------------------------------------- -->
     <main>
-    <div class="container">
-      <div class="Panel panel-default">
-         <div class="panel-heading">
-            <h3 class="panel-title">Solicitud de arriendo</h3>
-         </div>
-         <div class="panel-body">           
-            <form class="form-horizontal" id="rentalForm">
-                <div class="form-group">
-                    <label for="nombre" class="col-sm-2 control-label">Nombre y apellido</label>
-                    <div class="col-sm-10">
-                        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="NOMBRE Y APELLIDO">
-                    </div>
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Solicitud de arriendo</h3>
                 </div>
-
-                <div class="form-group">
-                    <label for="correo" class="col-sm-2 control-label">Correo electrónico</label>
-                    <div class="col-sm-10">
-                        <input type="email" id="correo" name="correo" class="form-control" placeholder="CORREO ELECTRÓNICO">
-                    </div>
+                <div class="card-body">
+                    <form class="row g-3" id="rentalForm">
+                        <div class="col-md-12">
+                            <label for="nombre" class="form-label">Nombre y apellido</label>
+                            <input type="text" id="nombre" name="nombre" class="form-control" placeholder="NOMBRE Y APELLIDO">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="correo" class="form-label">Correo electrónico</label>
+                            <input type="email" id="correo" name="correo" class="form-control" placeholder="CORREO ELECTRÓNICO">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="numero" class="form-label">Número de contacto</label>
+                            <input type="number" id="numero" name="numero" class="form-control" placeholder="NÚMERO DE CONTACTO">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="bicicleta" class="form-label">Tipo de bicicleta</label>
+                            <select id="bicicleta" name="bicicleta" class="form-select">
+                                <option value="">TIPO DE BICICLETA</option>
+                                <option value="urbana">URBANA</option>
+                                <option value="montana">MONTAÑA</option>
+                                <option value="carretera">CARRETERA</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="talla" class="form-label">Talla</label>
+                            <input type="number" id="talla" name="talla" class="form-control" placeholder="TALLA">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="fecha" class="form-label">Rango de fechas</label>
+                            <input type="date" id="fecha" name="fecha" class="form-control" placeholder="RANGO DE FECHAS">
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-dark" type="submit">Enviar formulario</button>
+                        </div>
+                    </form>
                 </div>
-
-                <div class="form-group">
-                    <label for="numero" class="col-sm-2 control-label">Número de contacto</label>
-                    <div class="col-sm-10">
-                        <input type="number" id="numero" name="numero" class="form-control" placeholder="NÚMERO DE CONTACTO">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="bicicleta" class="col-sm-2 control-label">Tipo de bicicleta</label>
-                    <div class="col-sm-10">
-                        <select id="bicicleta" name="bicicleta" class="form-control">
-                            <option value="">TIPO DE BICICLETA</option>
-                            <option value="urbana">URBANA</option>
-                            <option value="montana">MONTAÑA</option>
-                            <option value="carretera">CARRETERA</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="talla" class="col-sm-2 control-label">Talla</label>
-                    <div class="col-sm-10">
-                        <input type="number" id="talla" name="talla" class="form-control" placeholder="TALLA">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="fecha" class="col-sm-2 control-label">Rango de fechas</label>
-                    <div class="col-sm-10">
-                        <input type="date" id="fecha" name="fecha" class="form-control" placeholder="RANGO DE FECHAS">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                      <button class="btn btn-dark" type="submit">Enviar formulario</button>
-                    </div>
-                </div>
-            </form>
-         </div>
-      </div>
-   </div>
+            </div>
+        </div>
+        
    <!-- jQuery  -->
     
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
