@@ -5,7 +5,7 @@
 
             <!-- icono izquierda -->
             <div class="col-4">
-                <a href="Principal.html"><img class="d-block mx-auto" src="{% static 'img/image.png' %}" width="130" alt=""></a>
+                <a href="{% url 'Principal' %}"><img class="d-block mx-auto" src="{% static 'img/image.png' %}" width="130" alt=""></a>
             </div>
             <!-- fin icono izquierda -->
 
@@ -20,13 +20,13 @@
           <!-- Icono inicio de sesión -->
           <div class="col-2" >
             <div class="icon-container1">
-              <a href="Inicio sesion.html"><i id="login" class="fa-solid fa-user icon"></i></a>
+              <a href="{% url 'inicio-sesion' %}"><i id="login" class="fa-solid fa-user icon"></i></a>
           </div>
           </div>
             <!-- icono derecha -->
           <div class="col-2">
             <div class="icon-container2">
-            <a href="Tienda.html"><i id="carrito" class="fa-solid fa-cart-shopping"></i></a>
+            <a href="{% url 'tienda' %}"><i id="carrito" class="fa-solid fa-cart-shopping"></i></a>
           </div>
           
           <!-- fin icono derecha -->
@@ -67,7 +67,7 @@
                       </ul>
                     </li>
                     <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" style="color: white;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <a class="nav-link dropdown-toggle" style="color: white;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         TALLER
                       </a>
                       <ul class="dropdown-menu">
