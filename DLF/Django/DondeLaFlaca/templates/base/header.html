@@ -5,30 +5,30 @@
 
             <!-- icono izquierda -->
             <div class="col-4">
-                <a href="{% url 'Principal' %}"><img class="d-block mx-auto" src="{% static 'img/image.png' %}" width="130" alt=""></a>
+              <a href="{% url 'Principal' %}"><img class="d-block mx-auto" src="{% static 'img/image.png' %}" width="130" alt=""></a>
             </div>
             <!-- fin icono izquierda -->
 
             <!-- barra de busqueda -->
             <div class="col-4">
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="¿Qué estás buscando?" aria-label="Search">
-                    <button class="btn btn-dark" type="submit">Buscar</button>
-                  </form>
+              <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="¿Qué estás buscando?" aria-label="Search">
+                <button class="btn btn-dark" type="submit">Buscar</button>
+              </form>
             </div>
             <!-- fin barra de busqueda -->
           <!-- Icono inicio de sesión -->
           <div class="col-2" >
             <div class="icon-container1">
               <a href="{% url 'inicio-sesion' %}"><i id="login" class="fa-solid fa-user icon"></i></a>
-          </div>
+            </div>
           </div>
             <!-- icono derecha -->
           <div class="col-2">
             <div class="icon-container2">
-            <a href="{% url 'tienda' %}"><i id="carrito" class="fa-solid fa-cart-shopping"></i></a>
+              <a href="{% url 'tienda' %}"><i id="carrito" class="fa-solid fa-cart-shopping"></i></a>
+            </div>
           </div>
-          
           <!-- fin icono derecha -->
 
         </div>
