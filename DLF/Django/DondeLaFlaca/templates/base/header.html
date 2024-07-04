@@ -3,25 +3,34 @@
     <div class="container-fluid">
         <div class="row">
 
-            <!-- icono izquierda -->
-            <div class="col-4">
-              <a href="{% url 'Principal' %}"><img class="d-block mx-auto" src="{% static 'img/image.png' %}" width="130" alt=""></a>
-            </div>
-            <!-- fin icono izquierda -->
+          <!-- icono izquierda -->
+          <div class="col-4">
+            <a href="{% url 'Principal' %}"><img class="d-block mx-auto" src="{% static 'img/image.png' %}" width="130" alt=""></a>
+          </div>
+          <!-- fin icono izquierda -->
 
-            <!-- barra de busqueda -->
-            <div class="col-4">
-              <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="¿Qué estás buscando?" aria-label="Search">
-                <button class="btn btn-dark" type="submit">Buscar</button>
-              </form>
-            </div>
-            <!-- fin barra de busqueda -->
+          <!-- barra de busqueda -->
+          <div class="col-4">
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="¿Qué estás buscando?" aria-label="Search">
+              <button class="btn btn-dark" type="submit">Buscar</button>
+            </form>
+          </div>
+          <!-- fin barra de busqueda -->
+
           <!-- Icono inicio de sesión -->
           <div class="col-2" >
-            <div class="icon-container1">
-              <a href="{% url 'inicio-sesion' %}"><i id="login" class="fa-solid fa-user icon"></i></a>
-            </div>
+            {% if request.user.is_authenticated %}
+              <a href="{% url 'logout' %}">
+                <button class="btn btn-danger my-1">
+                    Cerrar Sesion
+                </button>
+              </a>
+            {% else %}
+              <div class="icon-container1">
+                <a href="{% url 'login' %}"><i id="login" class="fa-solid fa-user icon"></i></a>
+              </div>
+            {% endif%}
           </div>
             <!-- icono derecha -->
           <div class="col-2">
@@ -45,13 +54,6 @@
                 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                    <!-- <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li> -->
-                    
-                    <!-- <li class="nav-item">
-                      <a class="nav-link" href="#">Link</a>
-                    </li> -->
                     <li class="nav-item">
                       <a class="nav-link active" aria-current="page" style="color: white;" href="{% url 'Principal' %}">INICIO</a>
                     </li>
@@ -62,8 +64,6 @@
                       <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{% url 'tienda' %}">Bicicletas</a></li>
                         <li><a class="dropdown-item" href="{% url 'tienda' %}">Indumentaria</a></li>
-                        <!-- <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li> -->
                       </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -73,20 +73,36 @@
                       <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{% url 'mantencion' %}">Mantención</a></li>
                         <li><a class="dropdown-item" href="{% url 'mantencion' %}">Reparación</a></li>
-                        <!-- <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li> -->
                       </ul>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link active" aria-current="page" style="color: white;" href="{% url 'arriendo' %}">ARRIENDO</a>
                     </li>
+
+                    {% if request.user.is_authenticated %}
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" style="color: white;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          BASE DE DATOS
+                        </a>
+                        <ul class="dropdown-menu">
+                          {% if request.session.tipo == 'ADMIN' %}
+                            <li><a class="dropdown-item" href="">Usuarios</a></li>
+                          {% endif %}
+                          <li><a class="dropdown-item" href="">Arriendos</a></li>
+                          <li><a class="dropdown-item" href="">Ventas</a></li>
+                          <li><a class="dropdown-item" href="">Reparaciones</a></li>
+                          <li><a class="dropdown-item" href="">Varios</a></li>
+                          <li><a class="dropdown-item" href="">Productos</a></li>
+                        </ul>
+                      </li>
+                    {% endif%}
+
                   </ul>
                   
                 </div>
               </div>
             </nav>
             <!-- fin nav bar -->
-
         </div>
     </div>
 </header>
