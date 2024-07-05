@@ -31,7 +31,10 @@ def Registro(request):
     return render(request, 'pages/Registro.html', context)
 
 def Tienda(request):
-    context={}
+    productos = Producto.objects.all()
+    context={
+        "productos":productos
+    }
     return render(request, 'pages/Tienda.html', context)
 
 """ ------------------------------------------------------------------------ """
@@ -147,3 +150,10 @@ def desconectar(request):
         "design":"alert alert-info w-50 mx-auto text-center",
     }
     return render(request,"pages/inicio_sesion.html",context)
+
+def pruebafotos(request):
+    productos = Producto.objects.all()
+    context = {
+        "productos":productos
+    }
+    return render(request,"pages/pruebafotos.html",context)

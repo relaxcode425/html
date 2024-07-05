@@ -90,3 +90,19 @@ class Despacho(models.Model):
     pedido = models.DateTimeField(blank=True,null=True)
     envio = models.DateTimeField(blank=True,null=True)
     recibo = models.DateTimeField(blank=True,null=True)
+
+class Carrito(models.Model):
+    id_carrito = models.AutoField(primary_key=True, db_column="idCarrito")
+    rut = models.ForeignKey(
+        "Usuario", on_delete=models.CASCADE, db_column="rut"
+    )
+
+class Item(models.Model):
+    id_item = models.AutoField(primary_key=True, db_column="idItem")
+    id_carrito = models.ForeignKey(
+        "Carrito", on_delete=models.CASCADE, db_column="idCarrito"
+    )
+    id_producto = models.ForeignKey(
+        "Producto", on_delete=models.CASCADE, db_column="idProducto"
+    )
+    cantidad = models.IntegerField()

@@ -94,64 +94,22 @@
           <div class="col-md-10 col-lg-10 col-xl-10">
             <div class="row">
               <!-- prod -->
-              <div class="main_container">
-                <div class="product">
-                    <img src="{% static 'img/bici2.jpg' %}" alt="">
-                    <div class="product_desc">
-                        <h3>Titulo bici pa cachar</h3>
-                        <p>$300.000</p>
-                    </div>
-                </div>
-                <div class="product">
-                    <img src="{% static 'img/bici4.jpg' %}" alt="">
-                    <div class="product_desc">
-                        <h3>Titulo bici pa cachar</h3>
-                        <p>$300.000</p>
-                    </div>
-                </div>
-                <div class="product">
-                    <img src="{% static 'img/bici5.jpg' %}" alt="">
-                    <div class="product_desc">
-                        <h3>Titulo bici pa cachar</h3>
-                        <p>$300.000</p>
-                    </div>
-                </div>
-                <div class="product">
-                    <img src="{% static 'img/bici6.jpg' %}" alt="">
-                    <div class="product_desc">
-                        <h3>Titulo bici pa cachar</h3>
-                        <p>$300.000</p>
-                    </div>
-                </div>
-                <div class="product">
-                    <img src="{% static 'img/bici7.jpg' %}" alt="">
-                    <div class="product_desc">
-                        <h3>Titulo bici pa cachar</h3>
-                        <p>$300.000</p>
-                    </div>
-                </div>
-                <div class="product">
-                    <img src="{% static 'img/bici8.jpg' %}" alt="">
-                    <div class="product_desc">
-                        <h3>Titulo bici pa cachar</h3>
-                        <p>$300.000</p>
-                    </div>
-                </div>
-                <div class="product">
-                    <img src="{% static 'img/bici9.jpg' %}" alt="">
-                    <div class="product_desc">
-                        <h3>Titulo bici pa cachar</h3>
-                        <p>$300.000</p>
-                    </div>
-                </div>
-                <div class="product">
-                    <img src="{% static 'img/bici10.jpg' %}" alt="">
-                    <div class="product_desc">
-                        <h3>Titulo bici pa cachar</h3>
-                        <p>$300.000</p>
-                    </div>
-                </div>
-            </div>
+                {% if productos %}
+                  {% for tmp in productos %}
+                    {% if tmp.stock >= 1 %}
+                      <div class="main_container">
+                        <div class="product">
+                          <img src="{% static tmp.foto %}" alt="..." >
+                          <div class="product_desc">
+                            <h3>{{tmp.nombre}}</h3>
+                            <p>${{tmp.precio}}</p>
+                          </div>
+                        </div>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+              </div>
               <!-- fin prod -->
             </div>
           </div>

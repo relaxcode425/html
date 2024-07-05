@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prueba</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+</head>
+<body>
+    <!-- -------------------------------------------------------------------- -->
+    {% include 'base/header.html' %}
+    <!-- -------------------------------------------------------------------- -->
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+                {% if productos %}
+                    {% for tmp in productos %}
+                        {% if tmp.stock >= 1 %}
+                            <div class="col-3">
+                                <div class="card w-100%">
+                                    <img src="{% static tmp.foto %}" class="card-img-top" alt="..." >
+                                    <div class="card-body">
+                                        <h6 class="card-title">{{tmp.nombre}}</h6>
+                                        <h6 class="card-text">${{tmp.precio}}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </main>
+    <br />
+    <br />
+    <!-- -------------------------------------------------------------------- -->
+    {% include 'base/footer.html' %}
+    <!-- -------------------------------------------------------------------- -->
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
