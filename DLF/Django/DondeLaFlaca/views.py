@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from .models import TipoUsuario,Usuario,TipoProducto,Producto,FormaPago,Pago,Detalle,Despacho
+from .models import TipoUsuario,Usuario,TipoProducto,Producto,FormaPago,Pago,Detalle,Despacho,Carrito,Item
 
 # Create your views here.
 def Principal(request):
@@ -157,3 +157,32 @@ def pruebafotos(request):
         "productos":productos
     }
     return render(request,"pages/pruebafotos.html",context)
+
+def añadir(request,id_prod,cant):
+    producto = Producto.objects.get(id_producto=id_prod)
+    if producto.stock >= cant:
+        usuario = Usuario.objects.get(user=request.user)
+        rut = usuario.rut
+        carrito = Carrito.objects.get(rut=rut)
+        item = Item(
+            id_carrito = carrito,
+            id_producto = producto,
+            cantidad = cant
+        )
+        item.save()
+        producto.stock = producto.stock - cant
+        producto.save()
+        
+        productos = Producto.objects.all()
+        context = {
+            "productos":productos
+        }
+
+        return render(request,"pages/tienda.html",context)
+    else:
+        productos = Producto.objects.all()
+        context = {
+            "message":"stock insuficiente",
+            "productos":productos
+        }
+        return render(request,"pages/tienda.html",context)
