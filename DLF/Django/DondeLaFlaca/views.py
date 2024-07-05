@@ -14,7 +14,7 @@ def Principal(request):
         "carritos":carritos
     }
     return render(request, 'pages/Principal.html', context)
-
+@login_required
 def Arriendo(request):
     context={}
     return render(request, 'pages/Arriendo.html', context)
@@ -22,7 +22,7 @@ def Arriendo(request):
 def Inicio_sesion(request):
     context={}
     return render(request, 'pages/Inicio_sesion.html', context)
-
+@login_required
 def Mantencion(request):
     context={}
     return render(request, 'pages/Mantencion.html', context)
@@ -36,9 +36,15 @@ def Registro(request):
     return render(request, 'pages/Registro.html', context)
 
 def Tienda(request):
+    usuarios = Usuario.objects.all()
     productos = Producto.objects.all()
+    carritos = Carrito.objects.all()
+    items = Item.objects.all()
     context={
-        "productos":productos
+        "usuarios":usuarios,
+        "productos":productos,
+        "carritos":carritos,
+        "items":items
     }
     return render(request, 'pages/Tienda.html', context)
 
@@ -179,7 +185,7 @@ def pruebafotos(request):
         "productos":productos
     }
     return render(request,"pages/pruebafotos.html",context)
-
+@login_required
 def addToCart(request,id_prod,cant):
     producto = Producto.objects.get(id_productoq=id_prod)
     if producto.stock >= cant:

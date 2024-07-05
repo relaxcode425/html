@@ -33,6 +33,24 @@
         /* box-shadow: 7px 13px 37px #000; */
         /* margin-bottom: 30px; */
       }
+
+      /* -------------------------------------------------------------------------- */
+
+      #carrito {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 100%;
+            background: white;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+        #carrito.visible {
+            transform: translateX(0);
+        }
     </style>
 </head>
 <body class="body_tienda">
@@ -97,12 +115,23 @@
                 {% if productos %}
                   {% for tmp in productos %}
                     {% if tmp.stock >= 1 %}
-                      <div class="main_container">
-                        <div class="product">
-                          <img src="{% static tmp.foto %}" alt="..." >
-                          <div class="product_desc">
-                            <h3>{{tmp.nombre}}</h3>
-                            <p>${{tmp.precio}}</p>
+                      <div class="col-6">
+                        <div class="main_container">
+                          <div class="product">
+                            <img src="{% static tmp.foto %}" alt="..." >
+                            <div class="product_desc">
+                              <div class="col">
+                                <h3>{{tmp.nombre}}</h3>
+                                <p>${{tmp.precio}}</p>
+                              </div>
+                              <div class="col">
+                                <a href="{% url 'addToCart' %}">
+                                  <button type="button" class="btn btn-outline-info">
+                                    Comprar
+                                  </button>
+                                </a>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -119,8 +148,61 @@
       <br>
     </main>
     <!-- -------------------------------------------------------------------- -->
-     {% include 'base/footer.html' %}
+    {% include 'base/footer.html' %}
+    <!-- -------------------------------------------------------------------- -->
+    {% if request.user.is_authenticated %}
+      <button id="abrir-carrito" class="btn btn-secondary fixed-bottom m-3">Abrir Carrito</button>
+    {% endif %}
+    <div id="carrito" class="p-3">
+      <h2>Tu Carrito</h2>
+      <div id="carrito-items">
+        {% if usuarios %}
+          {% for us in usuarios %}
+            {% if us.user == request.user %}
+              {% if carritos %}
+                {% for cart in carritos %}
+                  {% if us == cart.rut %}
+                    {% if items %}
+                      {% for item in items %}
+                          {% if item.id_carrito == cart %}
+                          <div class="carrito-item mb-3">
+                            <div class="d-flex">
+                              <img src="{% static item.id_producto.foto %}" class="img-fluid" style="width: 50px; height: 50px;" alt="{{ item.id_producto.nombre }}">
+                              <div class="ml-3">
+                                <h5>{{ item.id_producto.nombre }}</h5>
+                                <p>Cantidad: {{ item.cantidad }}</p>
+                                <p>Precio unitario: ${{ item.id_producto.precio }}</p>
+                              </div>
+                            </div>
+                          </div>
+                        {% endif %}
+                      {% endfor %}
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      </div>
+      <button id="cerrar-carrito" class="btn btn-danger">Cerrar</button>
+    </div>
     <!-- -------------------------------------------------------------------- -->
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('#abrir-carrito').click(function() {
+          $('#carrito').addClass('visible');
+          $('#abrir-carrito').hide();
+        });
+
+        $('#cerrar-carrito').click(function() {
+          $('#carrito').removeClass('visible');
+          $('#abrir-carrito').show();
+        });
+      });
+  </script>
+
 </body>
 </html>
