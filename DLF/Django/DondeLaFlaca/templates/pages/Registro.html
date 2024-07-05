@@ -7,8 +7,9 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'style.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.20.1/dist/jquery.validate.min.js"></script>
 </head>
 <body>
     <!-- ------------------------------------------- -->
@@ -17,40 +18,101 @@
     <main>
         <div class="container-fluid mt-3 mb-3">
             <div class="row">
-                <form action="" id="registro" method="POST" class="col-md-4 mx-auto shadow-lg text-center mt-3 p-5 ">
+                <form action="{% url 'registrar' %}" id="registro" name="registro" method="POST" class="col-md-4 mx-auto shadow-lg text-center mt-3 p-5 ">
+                    {% csrf_token %}
                     <h3>Registro</h3>
-    
-                    <div class="form-floating col-7 mx-auto mb-2">
-                        <input type="Text" class="form-control" name="usuario" id="usuario" placeholder="Ingrese usuario">
-                        <label for="usuario">Usuario</label>
-                   </div>
-    
-                    <div class="form-floating col-7 mx-auto mb-2">
-                        <input type="text" class="form-control" name="mail" id="mail" placeholder="Ingrese mail">
-                        <label for="mail">Mail</label>
-                    </div>
-    
-                    <div class="form-floating col-7 mx-auto mb-2">
-                        <input type="password" class="form-control" name="pass" id="pass" placeholder="Ingrese contraseña">
-                        <label for="pass">Contraseña</label>
-                    </div>
-    
-                    <div class="form-floating col-7 mx-auto mb-2">
-                        <input type="password" class="form-control" name="confirm" id="confirm" placeholder="Confirma tu contraseña">
-                        <label for="pass">Confirma tu contraseña</label>
-                    </div>
+
+                    {% if edit %}
+                        <div class="form-floating col-7 mx-auto mb-2">
+                            <input type="Text" class="form-control" name="username" id="username" value="{{username}}" placeholder="" required minlength="3">
+                            <label for="username">Usuario</label>
+                        </div>
+                        
+                        <div class="form-floating col-7 mx-auto mb-2">
+                            <input type="Text" class="form-control" name="rut" id="rut" value="{{rut}}" placeholder="" required minlength="9" maxlength="10">
+                            <label for="rut">Rut</label>
+                            <span style="opacity: 50%;">ej: 12345678-9</span>
+                        </div>
+
+                        <div class="form-floating col-7 mx-auto mb-2">
+                            <input type="Text" class="form-control" name="first_name" id="first_name" value="{{first_name}}" placeholder="" required>
+                            <label for="first_name">Nombre</label>
+                        </div>
+
+                        <div class="form-floating col-7 mx-auto mb-2">
+                            <input type="Text" class="form-control" name="last_name" id="last_name" value="{{last_name}}" placeholder="" required>
+                            <label for="last_name">Apellido</label>
+                        </div>
+        
+                        <div class="form-floating col-7 mx-auto mb-2">
+                            <input type="text" class="form-control" name="email" id="email" value="{{email}}" placeholder="" required email>
+                            <label for="email">Correo electronico</label>
+                        </div>
+        
+                        <div class="form-floating col-7 mx-auto mb-2">
+                            <input type="password" class="form-control" name="password" id="password" value="{{password}}" placeholder="" required minlength="6">
+                            <label for="password">Contraseña</label>
+                        </div>
+        
+                        <div class="form-floating col-7 mx-auto mb-2">
+                            <input type="password" class="form-control" name="confirm" id="confirm" placeholder="" required equalTo="#password">
+                            <label for="confirm">Confirma tu contraseña</label>
+                        </div>
+                    {% else %}
+                        <div class="form-floating col-7 mx-auto mb-2">
+                            <input type="Text" class="form-control" name="username" id="username" placeholder="" required minlength="3">
+                            <label for="username">Usuario</label>
+                        </div>
+                        
+                        <div class="form-floating col-7 mx-auto mb-2">
+                            <input type="Text" class="form-control" name="rut" id="rut" placeholder="" required minlength="9" maxlength="10">
+                            <label for="rut">Rut</label>
+                            <span style="opacity: 50%;">ej: 12345678-9</span>
+                        </div>
+
+                        <div class="form-floating col-7 mx-auto mb-2">
+                            <input type="Text" class="form-control" name="first_name" id="first_name" placeholder="" required>
+                            <label for="first_name">Nombre</label>
+                        </div>
+
+                        <div class="form-floating col-7 mx-auto mb-2">
+                            <input type="Text" class="form-control" name="last_name" id="last_name" placeholder="" required>
+                            <label for="last_name">Apellido</label>
+                        </div>
+        
+                        <div class="form-floating col-7 mx-auto mb-2">
+                            <input type="text" class="form-control" name="email" id="email" placeholder="" required email>
+                            <label for="email">Correo electronico</label>
+                        </div>
+        
+                        <div class="form-floating col-7 mx-auto mb-2">
+                            <input type="password" class="form-control" name="password" id="password" placeholder="" required minlength="6">
+                            <label for="password">Contraseña</label>
+                        </div>
+        
+                        <div class="form-floating col-7 mx-auto mb-2">
+                            <input type="password" class="form-control" name="confirm" id="confirm" placeholder="" required equalTo="#password">
+                            <label for="confirm">Confirma tu contraseña</label>
+                        </div>
+                    {% endif %}
     
                     <div id="resultado"></div>
                     <div id="resultado2"></div>
                      
                     <div class="form-floating col-6 mx-auto">
-                        <input type="submit" value="Enviar" class="btn btn-dark" onclick="validar(); validarmail();">
-                        <!-- <input type="button" value="Registrarse" class="btn btn-dark" onclick="location.href='Registro.html'" name="Registrarse"> -->
+                        <input type="submit" value="Enviar" class="btn btn-dark">
                         <br><br>
                         <input type="button" value="volver atrás" class="btn btn-dark" onclick="history.back()" name="volver atrás">
                     </div>
+                    {% if message %}
+                        <div class="alert alert-danger w-50 mx-auto text-center">
+                            {{message}}
+                        </div>
+                    {% endif %}
                 </form>
-                
+                <script>
+                    $("#registro").validate();
+                </script>
             </div>
         </div>
     </main>
@@ -59,9 +121,5 @@
     <!-- -------------------------------------------------------------------- -->
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 </body>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script> -->
-<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
-<script src="{% static 'validacionesregistro.js' %}"></script>
-<script src="{% static 'js/funciones.js' %}"></script>
+<!-- <script src="{% static 'validacionesregistro.js' %}"></script> -->
 </html>

@@ -48,28 +48,42 @@ def registrar(request):
         last_name = request.POST.get('last_name')
         email = request.POST.get('email')
         password = request.POST.get('password')
+        confirm = request.POST.get('confirm')
         id_tipo_usuario = TipoUsuario.objects.get(tipo='Cliente')
 
-        # Validar y guardar los datos en la base de datos
-        if username and rut and first_name and last_name and email and password and id_tipo_usuario:
-            user = User(
-                username=username,
-                first_name=first_name,
-                last_name=last_name,
-                email=email,
-            )
-            user.set_password(password)  # Set the password using set_password
-            user.save()  # Save the user instance
+        if confirm == password:
+            # Validar y guardar los datos en la base de datos
+            if username and rut and first_name and last_name and email and password:
+                user = User(
+                    username=username,
+                    first_name=first_name,
+                    last_name=last_name,
+                    email=email,
+                )
+                user.set_password(password)
+                user.save()
 
-            usuario = Usuario(
-                rut=rut,
-                id_tipo_usuario=id_tipo_usuario,
-                user=user  # Associate the Usuario with the User
-            )
-            usuario.save()  # Save the usuario instance
-            login(request,user)
+                usuario = Usuario(
+                    rut=rut,
+                    id_tipo_usuario=id_tipo_usuario,
+                    user=user
+                )
+                usuario.save()
+                login(request,user)
 
-            return redirect('Principal')
+                return redirect('Principal')
+        else:
+            context={
+                "message":"Sus contraseñas no coincide",
+                "username":username,
+                "rut":rut,
+                "first_name":first_name,
+                "last_name":last_name,
+                "email":email,
+                "password":password,
+                "edit": True
+            }
+            return render(request,"pages/Registro.html",context)
     else:
         return render(request, 'registro.html')
     
