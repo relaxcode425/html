@@ -14,6 +14,25 @@
     {% include 'base/header.html' %}
     <!-- -------------------------------------------------------------------- -->
     <main>
+      
+      {% if carritos %}
+        {% for tmp in carritos %}
+          {% for us in usuarios %}
+            {% if us.user == request.user %}
+              {% if us == tmp.rut %}
+                <h1>{{tmp.id_carrito}}</h1>
+                <h1>{{tmp.rut.rut}}</h1>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+      {% endif %}
+      {% if carritos %}
+        {% for tmp in carritos %}
+          <h1>{{tmp.id_carrito}}</h1>
+          <h1>{{tmp.rut.rut}}</h1>
+        {% endfor %}
+      {% endif %}
       <div class="container-fluid">
       
       <!-- inicio carrusel -->

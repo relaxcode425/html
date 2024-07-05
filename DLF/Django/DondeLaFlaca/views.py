@@ -7,7 +7,12 @@ from .models import TipoUsuario,Usuario,TipoProducto,Producto,FormaPago,Pago,Det
 
 # Create your views here.
 def Principal(request):
-    context={}
+    carritos = Carrito.objects.all()
+    usuarios = Usuario.objects.all()
+    context={
+        "usuarios":usuarios,
+        "carritos":carritos
+    }
     return render(request, 'pages/Principal.html', context)
 
 def Arriendo(request):
@@ -123,10 +128,14 @@ def conectar(request):
             login(request,user)
 
             us = Usuario.objects.get(user=user)
+            carrito = Carrito(
+                rut = us
+            )
+            carrito.save()
             request.session["tipo"] = us.id_tipo_usuario.tipo
-            
+            carritos = Carrito.objects.all()
             context = {
-                
+                "carritos":carritos
             }
             return render(request,"pages/Principal.html",context)
         else:
@@ -144,6 +153,19 @@ def conectar(request):
 def desconectar(request):
     #del request.session["user"]
     if request.user.is_authenticated:
+        user = request.user
+        usuario = Usuario.objects.get(user=user)
+        rut = usuario.rut
+        try:
+            carrito = Carrito.objects.get(rut=rut)
+            if carrito:
+                items = Item.objects.all()
+                for tmp in items:
+                    if tmp.id_carrito == carrito:
+                        tmp.delete()
+                carrito.delete()
+        except:
+            a = 0
         logout(request)
     context = {
         "mensaje":"Sesion cerrada",
@@ -158,8 +180,8 @@ def pruebafotos(request):
     }
     return render(request,"pages/pruebafotos.html",context)
 
-def añadir(request,id_prod,cant):
-    producto = Producto.objects.get(id_producto=id_prod)
+def addToCart(request,id_prod,cant):
+    producto = Producto.objects.get(id_productoq=id_prod)
     if producto.stock >= cant:
         usuario = Usuario.objects.get(user=request.user)
         rut = usuario.rut
