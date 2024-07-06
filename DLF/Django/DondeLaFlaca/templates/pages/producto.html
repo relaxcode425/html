@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Producto</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+</head>
+<body>
+    <!-- -------------------------------------------------------------------- -->
+    {% include 'base/header.html' %}
+    <!-- -------------------------------------------------------------------- -->
+    <br />
+    <br />
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-10 shadow-lg mx-auto text-center p-3">
+                    <div class="row">
+                        <div class="col">
+                            <img src="{% static producto.foto %}" alt="" class="shadow-lg" width="90%" style="border-radius: 8px;">
+                        </div>
+                        <div class="col">
+                            <div class="col-11 mx-auto shadow-lg p-2" style="border-radius: 8px;">
+                                <h2>{{producto.nombre}}</h2>
+                                <br>
+                                <p>{{producto.descripcion}}</p>
+                                <h4>Precio: ${{producto.precio}}</h4>
+                                <h4>Stock: {{producto.stock}}</h4>
+                            </div>
+                            <br>
+                            <br>
+                            <div class="col-11 mx-auto shadow-lg p-5" style="border-radius: 8px;">
+                                <form action="{% url 'addToCart' %}" class="p-2" method="POST" id="cant" name="cant">
+                                    {% csrf_token %}
+                                    <h5 style="opacity: 94%;">Cantidad a comprar:</h5>
+                                    <input type="hidden" id="id" name="id" placeholder="" value="{{producto.id_producto}}">
+                                    <div class="form-floating col-7 mx-auto mb-2">
+                                        <input type="number" id="cantidad" name="cantidad" placeholder="" max="{{producto.stock}}" min="1">
+                                    </div>
+                                    <input type="submit" class="btn btn-outline-info" value="Añadir al carrito">
+                                    
+                                </form>
+                                <a href="{% url 'tienda' %}">
+                                    <button class="btn btn-outline-danger">
+                                        Cancelar
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <br />
+    <br />
+    <!-- -------------------------------------------------------------------- -->
+    {% include 'base/footer.html' %}
+    <!-- -------------------------------------------------------------------- -->
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</body>
+</html>

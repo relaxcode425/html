@@ -22,7 +22,7 @@
           <div class="col-2" >
             {% if request.user.is_authenticated %}
               <a href="{% url 'logout' %}">
-                <button class="btn btn-danger my-1">
+                <button class="btn btn-outline-danger my-1">
                     Cerrar Sesion
                 </button>
               </a>
@@ -35,7 +35,7 @@
             <!-- icono derecha -->
           <div class="col-2">
             <div class="icon-container2">
-              <a href="{% url 'tienda' %}"><i id="carrito-icono" class="fa-solid fa-cart-shopping"></i></a>
+              <a href="{% url 'tienda' %}"><i id="carrito" class="fa-solid fa-cart-shopping"></i></a>
             </div>
           </div>
           <!-- fin icono derecha -->

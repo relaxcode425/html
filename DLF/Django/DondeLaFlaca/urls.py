@@ -15,8 +15,24 @@ urlpatterns = [
     path('nosotros',views.Nosotros, name='nosotros'),
     path('registro',views.Registro, name='registro'),
     path('tienda',views.Tienda, name='tienda'),
+    path('ver-producto/<int:id_prod>',views.VerProducto, name='ver-producto'),
+
+    path('crud-productos', views.crud_productos, name='crud-productos'),
+    path('crud-usuarios', views.crud_usuarios, name='crud-usuarios'),
+    path('crud-varios', views.crud_varios, name='crud-varios'),
 
     path('addToCart',views.addToCart, name='addToCart'),
+
+    path('add-tipo-usuario', views.add_tipoUsuario, name='add-tipo-usuario'),
+    path('add-usuario', views.add_usuario, name='add-usuario'),
+    path('add-forma-pago', views.add_forma_pago, name='add-forma-pago'),
+    path('add-tipo-producto', views.add_tipo_producto, name='add-tipo-producto'),
+
+    path('edit-tipo-usuario/<str:pk>', views.edit_tipoUser, name='edit-tipo-usuario'),
+    path('edit-tipo-producto/<str:pk>', views.edit_tipoProducto, name='edit-tipo-producto'),
+
+    path('del-tipo-usuario/<str:pk>', views.del_tipoUsuario, name='del-tipo-usuario'),
+    path('del-tipo-producto/<str:pk>', views.del_tipoProducto, name='del-tipo-producto'),
 
     path('pruebafotos',views.pruebafotos, name='pruebafotos'),
 ]

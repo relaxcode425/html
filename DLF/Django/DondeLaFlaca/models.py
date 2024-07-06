@@ -45,7 +45,7 @@ class TipoProducto(models.Model):
 class Producto(models.Model):
     id_producto = models.AutoField(primary_key=True, db_column="idProducto")
     nombre = models.CharField(max_length=30)
-    descripcion = models.CharField(max_length=30, null=True, blank=True)
+    descripcion = models.CharField(max_length=100, null=True, blank=True)
     precio = models.IntegerField()
     stock = models.IntegerField()
     id_tipo_producto = models.ForeignKey(

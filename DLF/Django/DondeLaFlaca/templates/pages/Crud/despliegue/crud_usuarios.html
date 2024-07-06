@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mantenedor</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'style.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"> 
+</head>
+
+<body>
+    {% include 'base/header_admin.html'%}
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 shadow-lg mx-auto text-center p-3">
+                    {% if request.user.is_authenticated %}
+                        <h3>Bienvenido {{request.user.username }}</h3>
+                    {% endif%}
+                    <br>
+                    <h2 class="my-3">Lista Usuarios</h2><br>
+                    
+                    <table class="table table-dark table-hover table-bordered">
+                        <thead>
+                            <th>Usuario</th>
+                            <th>Rut</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Tipo de usuario</th>
+                            <th>Modificar</th>
+                            <th>Eliminar</th>
+                        </thead>
+                        <tbody>
+                            {% if usuarios %}
+                                {% for tmp in usuarios %}
+                                    <tr>
+                                        <td>{{tmp.user.username}}</td>
+                                        <td>{{tmp.rut}}</td>
+
+                                        {% if tmp.user.first_name == null or tmp.user.first_name == blank or tmp.user.first_name == "" %}
+                                            <td>vacío</td>
+                                        {% else %}
+                                            <td>{{tmp.user.first_name}}</td>
+                                        {% endif %}
+
+                                        {% if tmp.user.last_name == null or tmp.user.last_name == blank or tmp.user.last_name == "" %}
+                                            <td>vacío</td>
+                                        {% else %}
+                                            <td>{{tmp.user.last_name}}</td>
+                                        {% endif %}
+                                        
+                                        {% if tipoUsuarios %}
+                                            {% for tipo in tipoUsuarios %}
+                                                {% if tipo.id_tipo_usuario == tmp.id_tipo_usuario.id_tipo_usuario %}
+                                                    {% if tipo.tipo == null or tipo.tipo == blank %}
+                                                        <td>Sin</td>
+                                                    {% else %}
+                                                        <td>{{tipo.tipo}}</td>
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+
+                                        <td><a href=""><button
+                                            class="btn btn-warning">Modificar</button></a></td>
+                                        <td><a href=""><button
+                                            class="btn btn-danger">Eliminar</button></a></td>
+                                    </tr>
+                                {% endfor%}
+                            {% endif %}
+                        </tbody>
+                    </table>
+                    {% if mensaje%}
+                        <div class="alert alert-danger w-50 mx-auto">
+                            {{mensaje}}
+                        </div>
+                    {% endif%}
+                    <a href="{% url 'add-usuario' %}">
+                        <button class="btn btn-primary">Agregar Registro</button>
+                    </a>
+                    <a href="{% url 'crud-varios' %}">
+                        <button class="btn btn-info">
+                            Ver Tipos de Usuario
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+
+</html>

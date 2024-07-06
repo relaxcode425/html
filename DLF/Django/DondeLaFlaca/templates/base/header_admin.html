@@ -1,0 +1,97 @@
+{% load static %}
+<header>
+    <div class="container-fluid">
+        <div class="row">
+
+          <!-- icono izquierda -->
+          <div class="col-4">
+            <a href="{% url 'Principal' %}"><img class="d-block mx-auto" src="{% static 'img/image.png' %}" width="30%" alt=""></a>
+          </div>
+          <!-- fin icono izquierda -->
+
+          <!-- barra de busqueda -->
+          <div class="col-4"></div>
+          <!-- fin barra de busqueda -->
+
+          <!-- Icono inicio de sesión -->
+
+          <div class="col-2" >
+            {% if request.user.is_authenticated %}
+              <a href="{% url 'logout' %}">
+                <button class="btn btn-outline-danger my-1">
+                    Cerrar Sesion
+                </button>
+              </a>
+            {% else %}
+              <div class="icon-container1">
+                <a href="{% url 'login' %}"><i id="login" class="fa-solid fa-user icon"></i></a>
+              </div>
+            {% endif%}
+          </div>
+          
+          <!-- icono derecha -->
+          <div class="col-2">
+            <div class="icon-container2">
+            <a href="{% url 'tienda' %}"><i id="carrito" class="fa-solid fa-cart-shopping"></i></a>
+          </div>
+          <!-- fin icono derecha -->
+
+        </div>
+
+        <div class="row">
+            
+          <!-- inicio navbar -->
+          <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid bg-dark bg-opacity-100" >
+              <!-- <a class="navbar-brand" href="#"><img src="img/pata.png" width="45" alt=""></a> -->
+              
+              <button style="background-color: rgb(0, 0, 0); border-color: rgb(68, 68, 68);" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" style="color: white;" href="{% url 'Principal' %}">INICIO</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="" style="color: white;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      TIENDA
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="{% url 'tienda' %}">Bicicletas</a></li>
+                      <li><a class="dropdown-item" href="{% url 'tienda' %}">Indumentaria</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="" style="color: white;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      MANTENCIÓN
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="{% url 'mantencion' %}">Servicios</a></li>
+                      <li><a class="dropdown-item" href="{% url 'mantencion' %}">Taller</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" style="color: white;" href="{% url 'arriendo' %}">ARRIENDO</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="" style="color: white;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      BASE DE DATOS
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="{% url 'crud-usuarios' %}">Usuarios</a></li>
+                      <li><a class="dropdown-item" href="{% url 'crud-varios' %}">Varios</a></li>
+                      <li><a class="dropdown-item" href="{% url 'crud-productos' %}">Productos</a></li>
+                    </ul>
+                  </li>
+                </ul>
+                
+              </div>
+            </div>
+          </nav>
+          <!-- fin nav bar -->
+
+        </div>
+    </div>
+</header>
