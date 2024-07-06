@@ -22,6 +22,7 @@ urlpatterns = [
     path('crud-varios', views.crud_varios, name='crud-varios'),
 
     path('addToCart',views.addToCart, name='addToCart'),
+    path('delToCart/<str:pk>',views.delToCart, name='delToCart'),
 
     path('add-tipo-usuario', views.add_tipoUsuario, name='add-tipo-usuario'),
     path('add-usuario', views.add_usuario, name='add-usuario'),
@@ -30,6 +31,7 @@ urlpatterns = [
 
     path('edit-tipo-usuario/<str:pk>', views.edit_tipoUser, name='edit-tipo-usuario'),
     path('edit-tipo-producto/<str:pk>', views.edit_tipoProducto, name='edit-tipo-producto'),
+    path('edit-forma-pago/<str:pk>', views.edit_formaPago, name='edit-forma-pago'),
 
     path('del-tipo-usuario/<str:pk>', views.del_tipoUsuario, name='del-tipo-usuario'),
     path('del-tipo-producto/<str:pk>', views.del_tipoProducto, name='del-tipo-producto'),

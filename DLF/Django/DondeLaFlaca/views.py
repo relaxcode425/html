@@ -267,14 +267,28 @@ def addToCart(request):
         }
         return render(request,"pages/tienda.html",context)
     
-""" def delToCart(request,pk):
+def delToCart(request,pk):
     try:
         item = Item.objects.get(id_item=pk)
         
-        cant = item.
-
-        nuevo = producto.stock - int(cant)
+        cant = item.cantidad
+        producto = Producto.objects.get(id_producto = item.id_producto.id_producto)
+        nuevo = producto.stock + int(cant)
         producto.stock = nuevo
+        producto.save()
+        item.delete()
+
+        usuarios = Usuario.objects.all()
+        productos = Producto.objects.all()
+        carritos = Carrito.objects.all()
+        items = Item.objects.all()
+        context={
+            "usuarios":usuarios,
+            "productos":productos,
+            "carritos":carritos,
+            "items":items
+        }
+        return render(request,"pages/tienda.html",context)
     except:
         usuarios = Usuario.objects.all()
         productos = Producto.objects.all()
@@ -287,7 +301,7 @@ def addToCart(request):
             "items":items
         }
         return render(request,"pages/tienda.html",context)
- """    
+    
 def add_tipoUsuario(request):
     form = TipoUsuarioForm()
     if request.method=="POST":
@@ -494,7 +508,7 @@ def edit_tipoProducto(request,pk):
         mensaje="id no existe"
         context={'mensaje': mensaje, 'tipoProducto': tipoProducto}
         return render(request, "pages/Crud/despliegue/crud_varios.html", context)
-def edit_tipoProducto(request,pk):
+def edit_formaPago(request,pk):
 
     try:
         formaPago=FormaPago.objects.get(id_forma_pago=pk)

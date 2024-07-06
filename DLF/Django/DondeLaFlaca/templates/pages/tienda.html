@@ -173,6 +173,9 @@
                               <p>Cantidad: {{ item.cantidad }}</p>
                               <p>Precio unitario: ${{ item.id_producto.precio }}</p>
                             </div>
+                            <a href="{% url 'delToCart' pk=item.id_item %}">
+                              <button class="btn btn-outline-danger">Eliminar</button>
+                            </a>
                           </div>
                         </div>
                       {% endif %}
