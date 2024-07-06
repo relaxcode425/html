@@ -301,7 +301,20 @@ def delToCart(request,pk):
             "items":items
         }
         return render(request,"pages/tienda.html",context)
-    
+
+""" def pagarCart(request):
+    user = request.user
+    usuario = Usuario.objects.get(user=user)
+    carrito = Carrito.objects.get(rut=usuario)
+    items = Item.objects.all()
+    if items:
+        total = 0
+        for tmp in items:
+            if tmp.id_carrito == carrito:
+                subtotal = tmp.cantidad * tmp.id_producto.precio
+                total = total + subtotal
+ """
+
 def add_tipoUsuario(request):
     form = TipoUsuarioForm()
     if request.method=="POST":
@@ -535,4 +548,30 @@ def edit_formaPago(request,pk):
         formaPago = formaPago.objects.all()
         mensaje="id no existe"
         context={'mensaje': mensaje, 'formaPago': formaPago}
+        return render(request, "pages/Crud/despliegue/crud_varios.html", context)
+def del_formaPago(request, pk):
+    try:
+        formaPago = FormaPago.objects.get(id_forma_pago=pk)
+        formaPago.delete()
+
+        tipoUsuarios = TipoUsuario.objects.all()
+        formaPago = FormaPago.objects.all()
+        tipoProducto = TipoProducto.objects.all()
+        context = {
+            "tipoUsuarios": tipoUsuarios,
+            "formaPago" : formaPago,
+            "tipoProducto" : tipoProducto,
+            "mensaje": "Registro Eliminado",
+        }
+        return render(request, "pages/Crud/despliegue/crud_varios.html", context)
+    except:
+        tipoUsuarios = TipoUsuario.objects.all()
+        formaPago = FormaPago.objects.all()
+        tipoProducto = TipoProducto.objects.all()
+        context = {
+            "tipoUsuarios": tipoUsuarios,
+            "formaPago" : formaPago,
+            "tipoProducto" : tipoProducto,
+            "mensaje": "Error,Tipo de usuario no encontrado...",
+        }
         return render(request, "pages/Crud/despliegue/crud_varios.html", context)

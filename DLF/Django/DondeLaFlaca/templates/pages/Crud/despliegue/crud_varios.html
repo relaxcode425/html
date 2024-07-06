@@ -81,10 +81,10 @@
                                     <tr>
                                         <td>{{tmp.id_forma_pago}}</td>
                                         <td>{{tmp.forma}}</td>
-                                        <td><a href=""> <!-- url 'user_findEdit' pk=tmp.rut -->
+                                        <td><a href="{% url 'edit-forma-pago' pk=tmp.id_forma_pago %}"> <!-- url 'user_findEdit' pk=tmp.rut -->
                                             <button class="btn btn-warning">Modificar</button>
                                         </a></td>
-                                        <td><a href=""> <!-- url 'user_del' pk=tmp.rut -->
+                                        <td><a href="{% url 'del-forma-pago' pk=tmp.id_forma_pago  %}"> <!-- url 'user_del' pk=tmp.rut -->
                                             <button class="btn btn-danger">Eliminar</button>
                                         </a></td>
                                     </tr>

@@ -35,6 +35,7 @@ urlpatterns = [
 
     path('del-tipo-usuario/<str:pk>', views.del_tipoUsuario, name='del-tipo-usuario'),
     path('del-tipo-producto/<str:pk>', views.del_tipoProducto, name='del-tipo-producto'),
+    path('del-forma-pago/<str:pk>', views.del_formaPago, name='del-forma-pago'),
 
     path('pruebafotos',views.pruebafotos, name='pruebafotos'),
 ]
