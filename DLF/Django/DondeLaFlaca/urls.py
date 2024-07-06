@@ -22,6 +22,7 @@ urlpatterns = [
     path('crud-varios', views.crud_varios, name='crud-varios'),
 
     path('addToCart',views.addToCart, name='addToCart'),
+    path('pagarCart',views.pagarCart, name='pagarCart'),
     path('delToCart/<str:pk>',views.delToCart, name='delToCart'),
 
     path('add-tipo-usuario', views.add_tipoUsuario, name='add-tipo-usuario'),

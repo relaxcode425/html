@@ -302,18 +302,82 @@ def delToCart(request,pk):
         }
         return render(request,"pages/tienda.html",context)
 
-""" def pagarCart(request):
+def pagarCart(request):
     user = request.user
     usuario = Usuario.objects.get(user=user)
     carrito = Carrito.objects.get(rut=usuario)
     items = Item.objects.all()
     if items:
-        total = 0
-        for tmp in items:
-            if tmp.id_carrito == carrito:
-                subtotal = tmp.cantidad * tmp.id_producto.precio
-                total = total + subtotal
- """
+        try:
+            total = 0
+            for tmp in items:
+                if tmp.id_carrito == carrito:
+                    subtotal = tmp.cantidad * tmp.id_producto.precio
+                    total = total + subtotal
+            forma = FormaPago.objects.get(forma='Tarjeta')
+            domicilio = False
+            pago = Pago(
+                rut = usuario,
+                total = total,
+                id_forma_pago = forma,
+                domicilio = domicilio
+            )
+            pago.save()
+            for tmp in items:
+                if tmp.id_carrito == carrito:
+                    subtotal = tmp.cantidad * tmp.id_producto.precio
+                    producto = tmp.id_producto
+                    cantidad = tmp.cantidad
+                    detalle = Detalle(
+                        id_pago = pago,
+                        id_producto = producto,
+                        cantidad = cantidad,
+                        subtotal = subtotal
+                    )
+                    detalle.save()
+                    tmp.delete()
+            carrito.delete()
+
+            carrito = Carrito(
+                rut = usuario
+            )
+            carrito.save()
+
+            usuarios = Usuario.objects.all()
+            productos = Producto.objects.all()
+            carritos = Carrito.objects.all()
+            items = Item.objects.all()
+            context={
+                "usuarios":usuarios,
+                "productos":productos,
+                "carritos":carritos,
+                "items":items
+            }
+            return render(request,"pages/tienda.html",context)
+        except:
+            usuarios = Usuario.objects.all()
+            productos = Producto.objects.all()
+            carritos = Carrito.objects.all()
+            items = Item.objects.all()
+            context={
+                "usuarios":usuarios,
+                "productos":productos,
+                "carritos":carritos,
+                "items":items
+            }
+            return render(request,"pages/tienda.html",context)
+    else:
+        usuarios = Usuario.objects.all()
+        productos = Producto.objects.all()
+        carritos = Carrito.objects.all()
+        items = Item.objects.all()
+        context={
+            "usuarios":usuarios,
+            "productos":productos,
+            "carritos":carritos,
+            "items":items
+        }
+        return render(request,"pages/tienda.html",context)
 
 def add_tipoUsuario(request):
     form = TipoUsuarioForm()

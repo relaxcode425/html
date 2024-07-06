@@ -190,7 +190,9 @@
     </div>
     <button id="cerrar-carrito" class="btn btn-outline-danger">Cerrar</button>
     {% if items %}
-      <button id="pagar-carrito" class="btn btn-outline-success">Pagar</button>
+      <a href="{% url 'pagarCart' %}">
+        <button id="pagar-carrito" class="btn btn-outline-success">Pagar</button>
+      </a>
     {% endif %}
   </div>
   <!-- -------------------------------------------------------------------- -->
