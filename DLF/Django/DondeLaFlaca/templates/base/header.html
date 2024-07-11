@@ -63,36 +63,30 @@
                       </a>
                       <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{% url 'tienda' %}">Bicicletas</a></li>
-                        <li><a class="dropdown-item" href="{% url 'tienda' %}">Indumentaria</a></li>
+                        <li><a class="dropdown-item" href="{% url 'tienda-indumentaria' %}">Indumentaria</a></li>
                       </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" style="color: white;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        TALLER
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{% url 'mantencion' %}">Mantención</a></li>
-                        <li><a class="dropdown-item" href="{% url 'mantencion' %}">Reparación</a></li>
-                      </ul>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" style="color: white;" href="{% url 'arriendo' %}">ARRIENDO</a>
                     </li>
 
                     {% if request.user.is_authenticated %}
                       <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="" style="color: white;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          BASE DE DATOS
-                        </a>
+                        {% if request.session.tipo == 'Cliente' %}
+                          <a class="nav-link dropdown-toggle" href="" style="color: white;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            HISTORIAL
+                          </a>
+                        {% else %}
+                          <a class="nav-link dropdown-toggle" href="" style="color: white;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            BASE DE DATOS
+                          </a>
+                        {% endif %}
                         <ul class="dropdown-menu">
-                          {% if request.session.tipo == 'ADMIN' %}
-                            <li><a class="dropdown-item" href="">Usuarios</a></li>
+                          {% if request.session.tipo == 'Cliente' %}
+                            <li><a class="dropdown-item" href="">isadgjweufuiwhsiqeh</a></li>
+                          {% else %}
+                            <li><a class="dropdown-item" href="{% url 'crud-usuarios' %}">Usuarios</a></li>
+                            <li><a class="dropdown-item" href="">Ventas</a></li>
+                            <li><a class="dropdown-item" href="{% url 'crud-varios' %}">Varios</a></li>
+                            <li><a class="dropdown-item" href="{% url 'crud-productos' %}">Productos</a></li>
                           {% endif %}
-                          <li><a class="dropdown-item" href="">Arriendos</a></li>
-                          <li><a class="dropdown-item" href="">Ventas</a></li>
-                          <li><a class="dropdown-item" href="">Reparaciones</a></li>
-                          <li><a class="dropdown-item" href="">Varios</a></li>
-                          <li><a class="dropdown-item" href="">Productos</a></li>
                         </ul>
                       </li>
                     {% endif%}

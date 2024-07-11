@@ -1,0 +1,6 @@
+- ADMINISTRADOR:
+    - admin
+    - Soyadmin
+- CLIENTE
+    - Erefgy
+    - Jyfgmz

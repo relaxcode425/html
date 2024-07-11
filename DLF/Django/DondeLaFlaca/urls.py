@@ -9,21 +9,20 @@ urlpatterns = [
     path('registrar', views.registrar, name='registrar'),
 
     path('', views.Principal, name='Principal'),
-    path('arriendo', views.Arriendo, name='arriendo'),
     path('inicio-sesion',views.Inicio_sesion, name='inicio-sesion'),
-    path('mantencion',views.Mantencion, name='mantencion'),
     path('nosotros',views.Nosotros, name='nosotros'),
     path('registro',views.Registro, name='registro'),
     path('tienda',views.Tienda, name='tienda'),
+    path('tienda-indumentaria',views.Tienda_indumentaria, name='tienda-indumentaria'),
     path('ver-producto/<int:id_prod>',views.VerProducto, name='ver-producto'),
-
-    path('crud-productos', views.crud_productos, name='crud-productos'),
-    path('crud-usuarios', views.crud_usuarios, name='crud-usuarios'),
-    path('crud-varios', views.crud_varios, name='crud-varios'),
 
     path('addToCart',views.addToCart, name='addToCart'),
     path('pagarCart',views.pagarCart, name='pagarCart'),
     path('delToCart/<str:pk>',views.delToCart, name='delToCart'),
+
+    path('crud-productos', views.crud_productos, name='crud-productos'),
+    path('crud-usuarios', views.crud_usuarios, name='crud-usuarios'),
+    path('crud-varios', views.crud_varios, name='crud-varios'),
 
     path('add-tipo-usuario', views.add_tipoUsuario, name='add-tipo-usuario'),
     path('add-usuario', views.add_usuario, name='add-usuario'),

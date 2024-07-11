@@ -15,18 +15,10 @@ def Principal(request):
         "carritos":carritos
     }
     return render(request, 'pages/Principal.html', context)
-@login_required
-def Arriendo(request):
-    context={}
-    return render(request, 'pages/Arriendo.html', context)
 
 def Inicio_sesion(request):
     context={}
     return render(request, 'pages/Inicio_sesion.html', context)
-@login_required
-def Mantencion(request):
-    context={}
-    return render(request, 'pages/Mantencion.html', context)
 
 def Nosotros(request):
     context={}
@@ -47,7 +39,8 @@ def VerProducto(request,id_prod):
 
 def Tienda(request):
     usuarios = Usuario.objects.all()
-    productos = Producto.objects.all()
+    tipo = TipoProducto.objects.get(tipo = "Bicicleta")
+    productos = Producto.objects.all().filter(id_tipo_producto = tipo)
     carritos = Carrito.objects.all()
     items = Item.objects.all()
     context={
@@ -58,12 +51,21 @@ def Tienda(request):
     }
     return render(request, 'pages/Tienda.html', context)
 
+def Tienda_indumentaria(request):
+    usuarios = Usuario.objects.all()
+    tipo = TipoProducto.objects.get(tipo = "Accesorio")
+    tipo2 = TipoProducto.objects.get(tipo = "Pieza")
+    productos = Producto.objects.all().filter(id_tipo_producto = tipo).filter
+    carritos = Carrito.objects.all()
+    items = Item.objects.all()
+    context={
+        "usuarios":usuarios,
+        "productos":productos,
+        "carritos":carritos,
+        "items":items
+    }
+    return render(request, 'pages/Tienda.html', context)
 """ ------------------------------------------------------------------------ """
-
-
-
-""" ------------------------------------------------------------------------ """
-
 def registrar(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -166,6 +168,7 @@ def conectar(request):
         }
         return render(request,"pages/inicio_sesion.html",context)
 
+@login_required
 def desconectar(request):
     #del request.session["user"]
     if request.user.is_authenticated:
@@ -188,13 +191,15 @@ def desconectar(request):
         "design":"alert alert-info w-50 mx-auto text-center",
     }
     return render(request,"pages/inicio_sesion.html",context)
-
+""" ------------------------------------------------------------------------------------ """
 def pruebafotos(request):
     productos = Producto.objects.all()
     context = {
         "productos":productos
     }
     return render(request,"pages/pruebafotos.html",context)
+""" ------------------------------------------------------------------------------------ """
+@login_required
 def crud_varios(request):
     tipoUsuarios = TipoUsuario.objects.all()
     formaPago = FormaPago.objects.all()
@@ -205,6 +210,7 @@ def crud_varios(request):
         "tipoProducto" : tipoProducto,
     }
     return render(request, "pages/Crud/despliegue/crud_varios.html", context)
+
 @login_required
 def crud_productos(request):
     productos = Producto.objects.all()
@@ -214,6 +220,7 @@ def crud_productos(request):
         "tipoProductos" : tipoProductos,
     }
     return render(request, 'pages/Crud/despliegue/crud_productos.html', context)
+
 @login_required
 def crud_usuarios(request):
     usuarios = Usuario.objects.all()
@@ -223,6 +230,7 @@ def crud_usuarios(request):
         "tipoUsuarios": tipoUsuarios,
     }
     return render(request, 'pages/Crud/despliegue/crud_usuarios.html', context)
+""" ------------------------------------------------------------------------------------ """
 @login_required
 def addToCart(request):
     id_prod = request.POST.get('id')
@@ -266,7 +274,7 @@ def addToCart(request):
             "items":items
         }
         return render(request,"pages/tienda.html",context)
-    
+
 def delToCart(request,pk):
     try:
         item = Item.objects.get(id_item=pk)
@@ -378,7 +386,7 @@ def pagarCart(request):
             "items":items
         }
         return render(request,"pages/tienda.html",context)
-
+""" ------------------------------------------------------------------------------------- """
 def add_tipoUsuario(request):
     form = TipoUsuarioForm()
     if request.method=="POST":
