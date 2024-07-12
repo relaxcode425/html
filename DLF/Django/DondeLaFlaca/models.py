@@ -40,6 +40,8 @@ class TipoProducto(models.Model):
     tipo = models.CharField(max_length=30)
     def __str__(self):
         return (
+            str(self.id_tipo_producto)
+            + " " +
             str(self.tipo)
         )
 # Admin, Administrador, Staff

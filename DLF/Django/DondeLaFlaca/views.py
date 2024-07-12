@@ -155,7 +155,7 @@ def conectar(request):
             context = {
                 "carritos":carritos
             }
-            return render(request,"pages/Principal.html",context)
+            return redirect('Principal')
         else:
             context = {
                 "mensaje":"Usuario o contraseña incorrecta",
@@ -186,11 +186,7 @@ def desconectar(request):
         except:
             a = 0
         logout(request)
-    context = {
-        "mensaje":"Sesion cerrada",
-        "design":"alert alert-info w-50 mx-auto text-center",
-    }
-    return render(request,"pages/inicio_sesion.html",context)
+    return redirect('login')
 """ ------------------------------------------------------------------------------------ """
 def pruebafotos(request):
     productos = Producto.objects.all()

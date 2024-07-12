@@ -33,6 +33,8 @@ USUARIOS:
 
 -> filrar informacion en los html de la carpeta 'despliegue', 'agregar' y 'editar' según el tipo de usuario
 
+-> agregar mensaje de error en el login
+
 -> implementar una pagina para realizar el pago
     - crear html orientado a ver los productos a pagar y opciones relacionadas. ej: marcar o desmarcar la opcion de envío a domicilio
     - view con para cargar la información relacionada: Carrito, Items, productos, usuarios
