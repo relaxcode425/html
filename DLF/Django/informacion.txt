@@ -1,6 +1,16 @@
-- ADMINISTRADOR:
+- ADMIN:
     - admin
     - Soyadmin
 - CLIENTE
     - Erefgy
     - Jyfgmz
+
+-----------------------
+EL CARRITO:
+ - Solo funciona si se está conectado como usuario
+ - el botón del carrito aparecerá abajo de la pantalla en la tienda
+
+USUARIOS:
+ - Solo el 'Administrador' y el 'Admin' pueden modificar la informacion de los usuarios,
+   convirtiendolos en Cliente, Staff o Administrador.
+-----------------------
