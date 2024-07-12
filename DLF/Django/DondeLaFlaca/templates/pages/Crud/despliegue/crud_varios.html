@@ -15,133 +15,151 @@
     {% include 'base/header_admin.html' %}
     <main>
         <div class="container">
-            <div class="row">
-                <div class="col-md-8 shadow-lg mx-auto text-center p-3">
-                    {% if request.user.is_authenticated %}
-                        <h3>Bienvenido {{request.user.username }}</h3>
-                    {% else %}
-                        <h3>Bienvenido Invitado</h3>
-                    {% endif%}
-                    <h2 class="my-3">Lista Tipo de Usuarios</h2>
-                    <br>
-                    <table class="table table-dark table-hover table-bordered">
-                        <thead>
-                            <th>Id</th>
-                            <th>Tipo de usuario</th>
-                            <th>descripcion</th>
-                            <th>Modificar</th>
-                            <th>Eliminar</th>
-                        </thead>
-                        <tbody>
-                            {% if tipoUsuarios %}
-                                {% for tmp in tipoUsuarios%}
-                                    <tr>
-                                        <td>{{tmp.id_tipo_usuario}}</td>
-                                        <td>{{tmp.tipo}}</td>
-                                        <td>{{tmp.descripcion}}</td>
-                                        <td><a href="{% url 'edit-tipo-usuario' pk=tmp.id_tipo_usuario %}"> <!-- url 'user_findEdit' pk=tmp.rut -->
-                                            <button class="btn btn-warning">Modificar</button>
-                                        </a></td>
-                                        <td><a href="{% url 'del-tipo-usuario' pk=tmp.id_tipo_usuario %}"> <!-- url 'user_del' pk=tmp.rut -->
-                                            <button class="btn btn-danger">Eliminar</button>
-                                        </a></td>
-                                    </tr>
-                                {% endfor%}
-                            {% endif %}
-                        </tbody>
-                    </table>
-                    {% if mensaje%}
-                        <div class="alert alert-danger w-50 mx-auto">
-                            {{mensaje}}
+            {% if request.session.tipo != 'Cliente' %}
+                {% if request.session.tipo == 'Admin' or request.session.tipo == 'Administrador' %}
+                    <div class="row">
+                        <div class="col-md-8 shadow-lg mx-auto text-center p-3">
+                            {% if request.user.is_authenticated %}
+                                <h3>Bienvenido {{request.user.username }}</h3>
+                            {% else %}
+                                <h3>Bienvenido Invitado</h3>
+                            {% endif%}
+                            <h2 class="my-3">Lista Tipo de Usuarios</h2>
+                            <br>
+                            <table class="table table-dark table-hover table-bordered">
+                                <thead>
+                                    <th>Id</th>
+                                    <th>Tipo de usuario</th>
+                                    <th>descripcion</th>
+                                    <th>Modificar</th>
+                                    <th>Eliminar</th>
+                                </thead>
+                                <tbody>
+                                    {% if tipoUsuarios %}
+                                        {% for tmp in tipoUsuarios%}
+                                            <tr>
+                                                <td>{{tmp.id_tipo_usuario}}</td>
+                                                <td>{{tmp.tipo}}</td>
+                                                <td>{{tmp.descripcion}}</td>
+                                                <td><a href="{% url 'edit-tipo-usuario' pk=tmp.id_tipo_usuario %}"> <!-- url 'user_findEdit' pk=tmp.rut -->
+                                                    <button class="btn btn-warning">Modificar</button>
+                                                </a></td>
+                                                <td><a href="{% url 'del-tipo-usuario' pk=tmp.id_tipo_usuario %}"> <!-- url 'user_del' pk=tmp.rut -->
+                                                    <button class="btn btn-danger">Eliminar</button>
+                                                </a></td>
+                                            </tr>
+                                        {% endfor%}
+                                    {% endif %}
+                                </tbody>
+                            </table>
+                            {% if mensaje%}
+                                <div class="alert alert-danger w-50 mx-auto">
+                                    {{mensaje}}
+                                </div>
+                            {% endif%}
+                            <a href="{% url 'add-tipo-usuario' %}">
+                                <button class="btn btn-primary">Agregar Registro</button>
+                            </a>
                         </div>
-                    {% endif%}
-                    <a href="{% url 'add-tipo-usuario' %}">
-                        <button class="btn btn-primary">Agregar Registro</button>
-                    </a>
-                </div>
-            </div>
-            <br>
-            <br>
-            <br>
-            <br>
-            <div class="row">
-                <div class="col-md-8 shadow-lg mx-auto text-center p-3">
-                    <h2 class="my-3">Lista Formas de Pago</h2>
+                    </div>
                     <br>
-                    <table class="table table-dark table-hover table-bordered">
-                        <thead>
-                            <th>Id</th>
-                            <th>Forma de Pago</th>
-                            <th>Modificar</th>
-                            <th>Eliminar</th>
-                        </thead>
-                        <tbody>
-                            {% if formaPago %}
-                                {% for tmp in formaPago%}
-                                    <tr>
-                                        <td>{{tmp.id_forma_pago}}</td>
-                                        <td>{{tmp.forma}}</td>
-                                        <td><a href="{% url 'edit-forma-pago' pk=tmp.id_forma_pago %}"> <!-- url 'user_findEdit' pk=tmp.rut -->
-                                            <button class="btn btn-warning">Modificar</button>
-                                        </a></td>
-                                        <td><a href="{% url 'del-forma-pago' pk=tmp.id_forma_pago  %}"> <!-- url 'user_del' pk=tmp.rut -->
-                                            <button class="btn btn-danger">Eliminar</button>
-                                        </a></td>
-                                    </tr>
-                                {% endfor%}
-                            {% endif %}
-                        </tbody>
-                    </table>
-                    {% if mensaje%}
-                        <div class="alert alert-danger w-50 mx-auto">
-                            {{mensaje}}
-                        </div>
-                    {% endif%}
-                    <a href="{% url 'add-forma-pago' %}">
-                        <button class="btn btn-primary">Agregar Registro</button>
-                    </a>
-                </div>
-            </div>
-            <br>
-            <br>
-            <div class="row">
-                <div class="col-md-8 shadow-lg mx-auto text-center p-3">
-                    <h2 class="my-3">Lista Tipo de Productos</h2>
                     <br>
-                    <table class="table table-dark table-hover table-bordered">
-                        <thead>
-                            <th>Id</th>
-                            <th>Tipo de Producto</th>
-                            <th>Modificar</th>
-                            <th>Eliminar</th>
-                        </thead>
-                        <tbody>
-                            {% if tipoProducto %}
-                                {% for tmp in tipoProducto%}
-                                    <tr>
-                                        <td>{{tmp.id_tipo_producto}}</td>
-                                        <td>{{tmp.tipo}}</td>
-                                        <td><a href="{% url 'edit-tipo-producto' pk=tmp.id_tipo_producto  %}"> <!-- url 'user_findEdit' pk=tmp.rut -->
-                                            <button class="btn btn-warning">Modificar</button>
-                                        </a></td>
-                                        <td><a href="{% url 'del-tipo-producto' pk=tmp.id_tipo_producto %}"> <!-- url 'user_del' pk=tmp.rut -->
-                                            <button class="btn btn-danger">Eliminar</button>
-                                        </a></td>
-                                    </tr>
-                                {% endfor%}
-                            {% endif %}
-                        </tbody>
-                    </table>
-                    {% if mensaje%}
-                        <div class="alert alert-danger w-50 mx-auto">
-                            {{mensaje}}
+                    <br>
+                {% endif %}
+                {% if request.session.tipo == 'Admin' or request.session.tipo == 'Administrador' or request.session.tipo == 'Staff' %}
+                    <div class="row">
+                        <div class="col-md-8 shadow-lg mx-auto text-center p-3">
+                            <h2 class="my-3">Lista Formas de Pago</h2>
+                            <br>
+                            <table class="table table-dark table-hover table-bordered">
+                                <thead>
+                                    <th>Id</th>
+                                    <th>Forma de Pago</th>
+                                    <th>Modificar</th>
+                                    <th>Eliminar</th>
+                                </thead>
+                                <tbody>
+                                    {% if formaPago %}
+                                        {% for tmp in formaPago%}
+                                            <tr>
+                                                <td>{{tmp.id_forma_pago}}</td>
+                                                <td>{{tmp.forma}}</td>
+                                                <td><a href="{% url 'edit-forma-pago' pk=tmp.id_forma_pago %}"> <!-- url 'user_findEdit' pk=tmp.rut -->
+                                                    <button class="btn btn-warning">Modificar</button>
+                                                </a></td>
+                                                <td><a href="{% url 'del-forma-pago' pk=tmp.id_forma_pago  %}"> <!-- url 'user_del' pk=tmp.rut -->
+                                                    <button class="btn btn-danger">Eliminar</button>
+                                                </a></td>
+                                            </tr>
+                                        {% endfor%}
+                                    {% endif %}
+                                </tbody>
+                            </table>
+                            {% if mensaje%}
+                                <div class="alert alert-danger w-50 mx-auto">
+                                    {{mensaje}}
+                                </div>
+                            {% endif%}
+                            <a href="{% url 'add-forma-pago' %}">
+                                <button class="btn btn-primary">Agregar Registro</button>
+                            </a>
                         </div>
-                    {% endif%}
-                    <a href="{% url 'add-tipo-producto' %}">
-                        <button class="btn btn-primary">Agregar Registro</button>
-                    </a>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-8 shadow-lg mx-auto text-center p-3">
+                            <h2 class="my-3">Lista Tipo de Productos</h2>
+                            <br>
+                            <table class="table table-dark table-hover table-bordered">
+                                <thead>
+                                    <th>Id</th>
+                                    <th>Tipo de Producto</th>
+                                    <th>Modificar</th>
+                                    <th>Eliminar</th>
+                                </thead>
+                                <tbody>
+                                    {% if tipoProducto %}
+                                        {% for tmp in tipoProducto%}
+                                            <tr>
+                                                <td>{{tmp.id_tipo_producto}}</td>
+                                                <td>{{tmp.tipo}}</td>
+                                                <td><a href="{% url 'edit-tipo-producto' pk=tmp.id_tipo_producto  %}"> <!-- url 'user_findEdit' pk=tmp.rut -->
+                                                    <button class="btn btn-warning">Modificar</button>
+                                                </a></td>
+                                                <td><a href="{% url 'del-tipo-producto' pk=tmp.id_tipo_producto %}"> <!-- url 'user_del' pk=tmp.rut -->
+                                                    <button class="btn btn-danger">Eliminar</button>
+                                                </a></td>
+                                            </tr>
+                                        {% endfor%}
+                                    {% endif %}
+                                </tbody>
+                            </table>
+                            {% if mensaje%}
+                                <div class="alert alert-danger w-50 mx-auto">
+                                    {{mensaje}}
+                                </div>
+                            {% endif%}
+                            <a href="{% url 'add-tipo-producto' %}">
+                                <button class="btn btn-primary">Agregar Registro</button>
+                            </a>
+                        </div>
+                    </div>
+                {% endif %}
+            {% else %}
+                <div class="row">
+                    <div class="col-md-8 shadow-lg mx-auto text-center p-3">
+                        <h1>Error</h1>
+                        <h4>Vuelva a la pagina principal...</h4>
+                        <a href="{% url 'Principal' %}">
+                            <button class="btn btn-outline-primary my-1">
+                                Inicio
+                            </button>
+                        </a>
+                    </div>
                 </div>
-            </div>
+            {% endif %}
             <br>
             <br>
         </div>

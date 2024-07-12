@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
+# Admin, Administrador(parcial)
 class TipoUsuario(models.Model):
     id_tipo_usuario = models.AutoField(primary_key=True, db_column="idTipoUsuario")
     tipo = models.CharField(max_length=30, db_column="Tipo de Usuario")
@@ -11,7 +12,7 @@ class TipoUsuario(models.Model):
         return (
             str(self.tipo)
         )
-
+# Admin, Administrador
 class Usuario(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     rut = models.CharField(primary_key=True, max_length=10)
@@ -23,7 +24,7 @@ class Usuario(models.Model):
         return (
             str(self.rut)
         )
-
+# Admin, Administrador, Staff
 class FormaPago(models.Model):
     id_forma_pago = models.AutoField(primary_key=True, db_column="idFormaPago")
     forma = models.CharField(max_length=30)
@@ -33,7 +34,7 @@ class FormaPago(models.Model):
         )
     class Meta:
         verbose_name_plural = "Formas de pago"
-
+# Admin, Administrador, Staff
 class TipoProducto(models.Model):
     id_tipo_producto = models.AutoField(primary_key=True, db_column="idTipoProducto")
     tipo = models.CharField(max_length=30)
@@ -41,7 +42,7 @@ class TipoProducto(models.Model):
         return (
             str(self.tipo)
         )
-
+# Admin, Administrador, Staff
 class Producto(models.Model):
     id_producto = models.AutoField(primary_key=True, db_column="idProducto")
     nombre = models.CharField(max_length=30)
@@ -59,7 +60,7 @@ class Producto(models.Model):
             + " "
             + str(self.nombre)
         )
-
+# Admin, Administrador, Staff (Cliente solo parcial)
 class Pago(models.Model):
     id_pago = models.AutoField(primary_key=True, db_column="idPago")
     rut = models.ForeignKey(
@@ -70,7 +71,7 @@ class Pago(models.Model):
         "FormaPago", on_delete=models.CASCADE, db_column="idFormaPago"
     )
     domicilio = models.BooleanField()
-
+# Admin, Administrador, Staff (Cliente solo parcial)
 class Detalle(models.Model):
     id_detalle = models.AutoField(primary_key=True, db_column="idDetalle")
     id_pago = models.ForeignKey(
@@ -81,7 +82,7 @@ class Detalle(models.Model):
     )
     cantidad = models.IntegerField()
     subtotal = models.IntegerField()
-    
+# Admin, Administrador, Staff (Cliente solo parcial)
 class Despacho(models.Model):
     id_despacho = models.AutoField(primary_key=True, db_column="idDespacho")
     id_pago = models.ForeignKey(
@@ -90,13 +91,13 @@ class Despacho(models.Model):
     pedido = models.DateTimeField(blank=True,null=True)
     envio = models.DateTimeField(blank=True,null=True)
     recibo = models.DateTimeField(blank=True,null=True)
-
+# 0
 class Carrito(models.Model):
     id_carrito = models.AutoField(primary_key=True, db_column="idCarrito")
     rut = models.ForeignKey(
         "Usuario", on_delete=models.CASCADE, db_column="rut"
     )
-
+# 0
 class Item(models.Model):
     id_item = models.AutoField(primary_key=True, db_column="idItem")
     id_carrito = models.ForeignKey(

@@ -18,27 +18,36 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 shadow-lg mx-auto text-center p-3">
-
-                    <h4>Formulario para Tipos de Producto:</h4>
-                    <br><br>
-                    <form action="{% url 'add-tipo-producto' %}" method="POST">
-                        {% csrf_token %}
-                        <div>
-                            {{form.as_p}}
-                        </div>
-                        <br>
-                        {% if mensaje%}
-                        <div class="alert alert-success w-50 mx-auto text-center">
-                            {{mensaje}}
-                        </div>
-                        {% endif%}
-                        <div class="mt-3">
-                            <button type="submit" class="btn btn-success">Agregar</button>
-                            <a href="{% url 'crud-varios' %}">
-                                <button type="button" class="btn btn-secondary">Volver</button>
-                            </a>
-                        </div>
-                    </form>
+                    {% if request.session.tipo == 'Admin' or request.session.tipo == 'Administrador' or request.session.tipo == 'Staff' %}
+                        <h4>Formulario para Tipos de Producto:</h4>
+                        <br><br>
+                        <form action="{% url 'add-tipo-producto' %}" method="POST">
+                            {% csrf_token %}
+                            <div>
+                                {{form.as_p}}
+                            </div>
+                            <br>
+                            {% if mensaje%}
+                            <div class="alert alert-success w-50 mx-auto text-center">
+                                {{mensaje}}
+                            </div>
+                            {% endif%}
+                            <div class="mt-3">
+                                <button type="submit" class="btn btn-success">Agregar</button>
+                                <a href="{% url 'crud-varios' %}">
+                                    <button type="button" class="btn btn-secondary">Volver</button>
+                                </a>
+                            </div>
+                        </form>
+                    {% else %}
+                        <h1>Error</h1>
+                        <h4>Vuelva a la pagina principal...</h4>
+                        <a href="{% url 'Principal' %}">
+                            <button class="btn btn-outline-primary my-1">
+                                Inicio
+                            </button>
+                        </a>
+                    {% endif %}
                 </div>
             </div>
         </div>

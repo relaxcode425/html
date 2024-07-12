@@ -26,6 +26,9 @@ USUARIOS:
 -- Guardar el 'tipo de usuario' en 'session' para filtrar información
 -- filtrado de información en header.html y header_admin.html según el tipo de usuario
 
+-- Admin no puede ser modificado de ninguna forma
+-- Admin no debe aparecer como opción para ningún otro usuario
+
 ****************Cosas por hacer****************
 
 -> filrar informacion en los html de la carpeta 'despliegue', 'agregar' y 'editar' según el tipo de usuario
@@ -33,7 +36,8 @@ USUARIOS:
 -> implementar una pagina para realizar el pago
     - crear html orientado a ver los productos a pagar y opciones relacionadas. ej: marcar o desmarcar la opcion de envío a domicilio
     - view con para cargar la información relacionada: Carrito, Items, productos, usuarios
-    - crear view o modificar el anterior para procesar la informacion del pago y guardarla (guardar la informacion de despacho en caso de marcar la casilla de envío a domicilio).
+    - crear view o modificar el anterior para procesar la informacion del pago y guardarla
+      (guardar la informacion de despacho en caso de marcar la casilla de envío a domicilio).
     - crear urls e implementarlos en el carrito y en la pagina para realizar el pago respectivamente.
 
 -> implementar crud de ventas y filtrar la información
