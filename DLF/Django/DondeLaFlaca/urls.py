@@ -16,6 +16,7 @@ urlpatterns = [
     path('tienda-indumentaria',views.Tienda_indumentaria, name='tienda-indumentaria'),
     path('ver-producto/<int:id_prod>',views.VerProducto, name='ver-producto'),
 
+    path('pago-carrito',views.pago_carrito, name='pago-carrito'),
     path('addToCart',views.addToCart, name='addToCart'),
     path('pagarCart',views.pagarCart, name='pagarCart'),
     path('delToCart/<str:pk>',views.delToCart, name='delToCart'),

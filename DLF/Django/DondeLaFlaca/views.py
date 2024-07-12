@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.db.models import Q
 from .models import TipoUsuario,Usuario,TipoProducto,Producto,FormaPago,Pago,Detalle,Despacho,Carrito,Item
 from .forms import TipoUsuarioForm, UsuarioForm, TipoProductoForm, FormaPagoForm
 
@@ -55,7 +56,7 @@ def Tienda_indumentaria(request):
     usuarios = Usuario.objects.all()
     tipo = TipoProducto.objects.get(tipo = "Accesorio")
     tipo2 = TipoProducto.objects.get(tipo = "Pieza")
-    productos = Producto.objects.all().filter(id_tipo_producto = tipo).filter
+    productos = Producto.objects.all().filter(Q(id_tipo_producto = tipo)| Q(id_tipo_producto = tipo2))
     carritos = Carrito.objects.all()
     items = Item.objects.all()
     context={
@@ -65,6 +66,28 @@ def Tienda_indumentaria(request):
         "items":items
     }
     return render(request, 'pages/Tienda.html', context)
+
+def pago_carrito(request):
+    usuarios = Usuario.objects.all()
+    productos = Producto.objects.all()
+    carritos = Carrito.objects.all()
+    items = Item.objects.all()
+    usuario = Usuario.objects.get(user=request.user)
+    carrito = Carrito.objects.get(rut=usuario)
+    
+    confirm = False
+    for i in items:
+        if i.id_carrito == carrito:
+            confirm = True
+            item = i
+    context={
+        "usuarios":usuarios,
+        "productos":productos,
+        "carritos":carritos,
+        "items":items,
+        "confirm":confirm
+    }
+    return render(request, 'pages/pago_carrito.html', context)
 """ ------------------------------------------------------------------------ """
 def registrar(request):
     if request.method == 'POST':

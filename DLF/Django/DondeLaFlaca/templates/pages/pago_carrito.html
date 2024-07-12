@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagar</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+</head>
+<body>
+    <!-- -------------------------------------------------------------------- -->
+    {% include 'base/header.html' %}
+    <!-- -------------------------------------------------------------------- -->
+    <br />
+    <br />
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-10 shadow-lg mx-auto text-center p-3">
+                    <div class="row">
+                        {% if confirm %}
+                            <div class="col">
+                                <div id="carrito-items">
+                                    {% if usuarios %}
+                                    {% for us in usuarios %}
+                                        {% if us.user == request.user %}
+                                        {% if carritos %}
+                                            {% for cart in carritos %}
+                                            {% if us == cart.rut %}
+                                                {% if items %}
+                                                {% for item in items %}
+                                                    {% if item.id_carrito == cart %}
+                                                    <div class="carrito-item mb-3">
+                                                        <div class="d-flex">
+                                                            <img src="{% static item.id_producto.foto %}" class="img-fluid" style="width: 50px; height: 50px;" alt="{{ item.id_producto.nombre }}">
+                                                            <div class="ml-3">
+                                                                <h5>{{ item.id_producto.nombre }}</h5>
+                                                                <p>Cantidad: {{ item.cantidad }}</p>
+                                                                <p>Precio unitario: ${{ item.id_producto.precio }}</p>
+                                                            </div>
+                                                            <a href="{% url 'delToCart' pk=item.id_item %}">
+                                                                <button class="btn btn-outline-danger">Eliminar</button>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    {% endif %}
+                                                {% endfor %}
+                                                {% endif %}
+                                            {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="col-11 mx-auto shadow-lg p-2" style="border-radius: 8px;">
+                                    <h4>medio de pago e info adicional</h4>
+                                </div>
+                                <br>
+                                <br>
+                                <div class="col-11 mx-auto shadow-lg p-5" style="border-radius: 8px;">
+                                    <form action="{% url 'addToCart' %}" class="p-2" method="POST" id="cant" name="cant">
+                                        {% csrf_token %}
+                                    </form>
+                                    <a href="{% url 'tienda' %}">
+                                        <button class="btn btn-outline-danger">
+                                            Cancelar
+                                        </button>
+                                    </a>
+                                    <a href="{% url 'pagarCart' %}">
+                                        <button class="btn btn-outline-success">
+                                            Pagar
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="carrito-item mb-3">
+                                <h3 style="opacity: 50%;">Carrito vacío</h3>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <br />
+    <br />
+    <!-- -------------------------------------------------------------------- -->
+    {% include 'base/footer.html' %}
+    <!-- -------------------------------------------------------------------- -->
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</body>
+</html>
