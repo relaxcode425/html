@@ -31,10 +31,6 @@ USUARIOS:
 
 ****************Cosas por hacer****************
 
--> filrar informacion en los html de la carpeta 'despliegue', 'agregar' y 'editar' según el tipo de usuario
-
--> agregar mensaje de error en el login
-
 -> implementar una pagina para realizar el pago
     - crear html orientado a ver los productos a pagar y opciones relacionadas. ej: marcar o desmarcar la opcion de envío a domicilio
     - view con para cargar la información relacionada: Carrito, Items, productos, usuarios
@@ -47,5 +43,12 @@ USUARIOS:
 -> crear views y urls para modificar la cantidad de productos que se van a comprar en el carrito (implementar en el carrito y en pagina de pago)
 
 -> modificar el view de añadir productos al carrito para evitar duplicar productos en 'Items'
+
+-> agregar los crud que faltan y filrar informacion en los html de la carpeta 'despliegue', 'agregar' y 'editar' según el tipo de usuario
+    - crud de productos
+    - crud de pagos y detalle juntos
+    - add, edit y delete de usuarios
+
+-> barra de busqueda
 
 ***********************************************
