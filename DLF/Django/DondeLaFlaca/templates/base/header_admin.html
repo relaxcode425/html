@@ -64,28 +64,28 @@
                     </ul>
                   </li>
                   {% if request.user.is_authenticated %}
-                      <li class="nav-item dropdown">
+                    <li class="nav-item dropdown">
+                      {% if request.session.tipo == 'Cliente' %}
+                        <a class="nav-link dropdown-toggle" href="" style="color: white;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          HISTORIAL
+                        </a>
+                      {% else %}
+                        <a class="nav-link dropdown-toggle" href="" style="color: white;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          BASE DE DATOS
+                        </a>
+                      {% endif %}
+                      <ul class="dropdown-menu">
                         {% if request.session.tipo == 'Cliente' %}
-                          <a class="nav-link dropdown-toggle" href="" style="color: white;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            HISTORIAL
-                          </a>
+                          <li><a class="dropdown-item" href="">isadgjweufuiwhsiqeh</a></li>
                         {% else %}
-                          <a class="nav-link dropdown-toggle" href="" style="color: white;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            BASE DE DATOS
-                          </a>
+                          <li><a class="dropdown-item" href="{% url 'crud-usuarios' %}">Usuarios</a></li>
+                          <li><a class="dropdown-item" href="">Ventas</a></li>
+                          <li><a class="dropdown-item" href="{% url 'crud-varios' %}">Varios</a></li>
+                          <li><a class="dropdown-item" href="{% url 'crud-productos' %}">Productos</a></li>
                         {% endif %}
-                        <ul class="dropdown-menu">
-                          {% if request.session.tipo == 'Cliente' %}
-                            <li><a class="dropdown-item" href="">isadgjweufuiwhsiqeh</a></li>
-                          {% else %}
-                            <li><a class="dropdown-item" href="{% url 'crud-usuarios' %}">Usuarios</a></li>
-                            <li><a class="dropdown-item" href="">Ventas</a></li>
-                            <li><a class="dropdown-item" href="{% url 'crud-varios' %}">Varios</a></li>
-                            <li><a class="dropdown-item" href="{% url 'crud-productos' %}">Productos</a></li>
-                          {% endif %}
-                        </ul>
-                      </li>
-                    {% endif%}
+                      </ul>
+                    </li>
+                  {% endif%}
                 </ul>
                 
               </div>
