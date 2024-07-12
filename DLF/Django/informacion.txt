@@ -18,19 +18,28 @@ USUARIOS:
 
 
 
-******************************************
+********************Apuntes********************
+
 -- Envío de información en views.py al momento de renderizar
 -- Uso de esta capacidad para cargar diferentes productos en tienda.html
 
 -- Guardar el 'tipo de usuario' en 'session' para filtrar información
--- filtrado de información en header.html y header_admin.html
-{
--> filrar informacion en los html de la carpeta 'despliegue', 'agregar' y 'editar'
+-- filtrado de información en header.html y header_admin.html según el tipo de usuario
+
+****************Cosas por hacer****************
+
+-> filrar informacion en los html de la carpeta 'despliegue', 'agregar' y 'editar' según el tipo de usuario
+
 -> implementar una pagina para realizar el pago
     - crear html orientado a ver los productos a pagar y opciones relacionadas. ej: marcar o desmarcar la opcion de envío a domicilio
     - view con para cargar la información relacionada: Carrito, Items, productos, usuarios
     - crear view o modificar el anterior para procesar la informacion del pago y guardarla (guardar la informacion de despacho en caso de marcar la casilla de envío a domicilio).
     - crear urls e implementarlos en el carrito y en la pagina para realizar el pago respectivamente.
--> crear views y urls para modificar la cantidad de productos que se van a comprar en el carrito
+
+-> implementar crud de ventas y filtrar la información
+
+-> crear views y urls para modificar la cantidad de productos que se van a comprar en el carrito (implementar en el carrito y en pagina de pago)
+
 -> modificar el view de añadir productos al carrito para evitar duplicar productos en 'Items'
-}
+
+***********************************************
