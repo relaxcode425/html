@@ -26,13 +26,13 @@
               </div>
               <div class="carousel-inner">
               <div class="carousel-item active">
-                  <img src="{% static 'img/banner 1.png' %}" class="d-block w-100" alt="a">
+                <img src="{% static 'img/banner 1.png' %}" class="d-block w-100" alt="a">
               </div>
               <div class="carousel-item">
-                  <img src="{% static 'img/carrusel 1.webp' %}" class="d-block w-100" alt="a">
+                <img src="{% static 'img/carrusel 1.webp' %}" class="d-block w-100" alt="a">
               </div>
               <div class="carousel-item">
-                  <img src="{% static 'img/carrusel 2.webp' %}" class="d-block w-100" alt="a">
+                <img src="{% static 'img/carrusel 2.webp' %}" class="d-block w-100" alt="a">
               </div>
               </div>
               <button class="carousel-control-prev" type="button" data-bs-target="#carruselbienvenida" data-bs-slide="prev">
@@ -106,42 +106,42 @@
               <div class="carousel-item">
                 <!-- prod -->
                 <div class="row">
-                    <div class="col-3">
-                      <div class="card w-100%">
-                        <img src="{% static 'img/Bicicleta-EstrellaGold-Aro29-Turqueza-MTB-1 450000 estella gold.webp' %}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h6 class="card-title">Bicicleta estrella gold</h6>
-                          <h6 class="card-text">$450.000</h6>
-                        </div>
+                  <div class="col-3">
+                    <div class="card w-100%">
+                      <img src="{% static 'img/Bicicleta-EstrellaGold-Aro29-Turqueza-MTB-1 450000 estella gold.webp' %}" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h6 class="card-title">Bicicleta estrella gold</h6>
+                        <h6 class="card-text">$450.000</h6>
                       </div>
                     </div>
-                    <div class="col-3">
-                      <div class="card w-100%">
-                        <img src="{% static 'img/Arnes-reflectante-negro rysport 5000.webp' %}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h6 class="card-title">Arnes reflectante negro</h6>
-                          <h6 class="card-text">$7.000</h6>
-                        </div>
+                  </div>
+                  <div class="col-3">
+                    <div class="card w-100%">
+                      <img src="{% static 'img/Arnes-reflectante-negro rysport 5000.webp' %}" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h6 class="card-title">Arnes reflectante negro</h6>
+                        <h6 class="card-text">$7.000</h6>
                       </div>
                     </div>
-                    <div class="col-3">
-                      <div class="card w-100%">
-                        <img src="{% static 'img/bicicleta-royalbaby-chipmunk-explorer 300mil.jpg' %}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h6 class="card-title">Bicicleta royal baby</h6>
-                          <h6 class="card-text">$300.000</h6>
-                        </div>
+                  </div>
+                  <div class="col-3">
+                    <div class="card w-100%">
+                      <img src="{% static 'img/bicicleta-royalbaby-chipmunk-explorer 300mil.jpg' %}" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h6 class="card-title">Bicicleta royal baby</h6>
+                        <h6 class="card-text">$300.000</h6>
                       </div>
                     </div>
-                    <div class="col-3">
-                      <div class="card w-100%">
-                        <img src="{% static 'img/SOPORTE-DE-BICICLETA-PARA-MURO.jpg' %}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h6 class="card-title">Soporte para muro</h6>
-                          <h6 class="card-text">$6000</h6>
-                        </div>
+                  </div>
+                  <div class="col-3">
+                    <div class="card w-100%">
+                      <img src="{% static 'img/SOPORTE-DE-BICICLETA-PARA-MURO.jpg' %}" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h6 class="card-title">Soporte para muro</h6>
+                        <h6 class="card-text">$6000</h6>
                       </div>
                     </div>
+                  </div>
                 </div>
                 <!-- fin prod -->
                 </div>
@@ -203,11 +203,9 @@
         <br /><br />
         <div class="row">
 
-          <a href="Arriendo.html" class="col-4 mx-auto"><img src="{% static 'img/arriendo de bicis.png' %}" class="d-block w-100" alt="" width=100% height=100%></a>
+          <a href="{% url 'tienda-indumentaria' %}" class="col-4 mx-auto" ><img src="{% static 'img/mantencion.png' %}" class="d-block w-100" alt="" width=100% height=100%></a>
             
-          <a href="Mantencion.html" class="col-4 mx-auto" ><img src="{% static 'img/mantencion.png' %}" class="d-block w-100" alt="" width=100% height=100%></a>
-            
-          <a href="Tienda.html" class="col-4 mx-auto my-auto"><img src="{% static 'img/Ver tienda.png' %}" class="d-block w-100" alt="" width=100% height=100%></a>
+          <a href="{% url 'tienda' %}" class="col-4 mx-auto my-auto"><img src="{% static 'img/Ver tienda.png' %}" class="d-block w-100" alt="" width=100% height=100%></a>
     
         </div>
         <br /><br />

@@ -15,8 +15,18 @@ USUARIOS:
    convirtiendolos en Cliente, Staff o Administrador.
 -----------------------
 
+=================================================
+LA PAGINA FUNCIONARÁ CORRECTAMENTE SOLO SI SE UTILIZAN LOS TIPOS DE USUARIO:
+- 'Admin'
+- 'Cliente'
+- 'Staff'
+- 'Administrador'
 
-
+LOS TIPOS DE PRODUCTO:
+- 'Pieza'
+- 'Bicicleta'
+- 'Accesorio'
+=================================================
 
 ********************Apuntes********************
 
@@ -37,8 +47,6 @@ USUARIOS:
     - (falta procesar el despacho) modificar el view para procesar la informacion del pago y guardarla (guardar la informacion de despacho en caso de marcar la casilla de envío a domicilio).
     - (listo) crear urls e implementarlos en el carrito y en la pagina para realizar el pago respectivamente.
 
--> crear views y urls para modificar la cantidad de productos que se van a comprar en el carrito (implementar en el carrito y en pagina de pago)
-
 -> modificar el view de añadir productos al carrito para evitar duplicar productos en 'Items'
 
 -> implementar crud de ventas y filtrar la información
@@ -47,6 +55,8 @@ USUARIOS:
     - crud de productos
     - crud de pagos y detalle juntos
     - add, edit y delete de usuarios
+
+-> crear views y urls para modificar la cantidad de productos que se van a comprar en el carrito (implementar en el carrito y en pagina de pago)
 
 -> barra de busqueda
 

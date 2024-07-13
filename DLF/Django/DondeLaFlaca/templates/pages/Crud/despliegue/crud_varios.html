@@ -41,12 +41,21 @@
                                                 <td>{{tmp.id_tipo_usuario}}</td>
                                                 <td>{{tmp.tipo}}</td>
                                                 <td>{{tmp.descripcion}}</td>
-                                                <td><a href="{% url 'edit-tipo-usuario' pk=tmp.id_tipo_usuario %}"> <!-- url 'user_findEdit' pk=tmp.rut -->
+                                                <!-- <td><a href="{% url 'edit-tipo-usuario' pk=tmp.id_tipo_usuario %}">
                                                     <button class="btn btn-warning">Modificar</button>
                                                 </a></td>
-                                                <td><a href="{% url 'del-tipo-usuario' pk=tmp.id_tipo_usuario %}"> <!-- url 'user_del' pk=tmp.rut -->
+                                                <td><a href="{% url 'del-tipo-usuario' pk=tmp.id_tipo_usuario %}">
                                                     <button class="btn btn-danger">Eliminar</button>
-                                                </a></td>
+                                                </a></td> -->
+                                                {% if tmp.tipo != 'Admin' %}
+                                                    <td><a href="{% url 'edit-tipo-usuario' pk=tmp.id_tipo_usuario %}"><button
+                                                        class="btn btn-warning">Modificar</button></a></td>
+                                                    <td><a href="{% url 'del-tipo-usuario' pk=tmp.id_tipo_usuario %}"><button
+                                                        class="btn btn-danger">Eliminar</button></a></td>
+                                                {% else %}
+                                                    <td><button class="btn btn-secondary">Modificar</button></td>
+                                                    <td><button class="btn btn-secondary">Eliminar</button></td>
+                                                {% endif %}
                                             </tr>
                                         {% endfor%}
                                     {% endif %}

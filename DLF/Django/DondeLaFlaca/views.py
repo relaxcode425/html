@@ -66,7 +66,7 @@ def Tienda_indumentaria(request):
         "items":items
     }
     return render(request, 'pages/Tienda.html', context)
-
+@login_required
 def pago_carrito(request):
     usuarios = Usuario.objects.all()
     productos = Producto.objects.all()
@@ -123,7 +123,7 @@ def registrar(request):
                 return redirect('Principal')
         else:
             context={
-                "message":"Sus contraseñas no coincide",
+                "message":"Sus contraseñas no coinciden",
                 "username":username,
                 "rut":rut,
                 "first_name":first_name,
