@@ -109,3 +109,4 @@ class Item(models.Model):
         "Producto", on_delete=models.CASCADE, db_column="idProducto"
     )
     cantidad = models.IntegerField()
+    subtotal = models.IntegerField(null=True,blank=True)

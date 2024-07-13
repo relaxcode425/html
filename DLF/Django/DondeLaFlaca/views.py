@@ -258,10 +258,12 @@ def addToCart(request):
         usuario = Usuario.objects.get(user=request.user)
         rut = usuario.rut
         carrito = Carrito.objects.get(rut=rut)
+        subtotal = int(producto.precio) * int(cant)
         item = Item(
             id_carrito = carrito,
             id_producto = producto,
-            cantidad = cant
+            cantidad = cant,
+            subtotal = subtotal
         )
         item.save()
         nuevo = producto.stock - int(cant)
@@ -269,7 +271,8 @@ def addToCart(request):
         producto.save()
         
         usuarios = Usuario.objects.all()
-        productos = Producto.objects.all()
+        tipo = TipoProducto.objects.get(tipo = "Bicicleta")
+        productos = Producto.objects.all().filter(id_tipo_producto = tipo)
         carritos = Carrito.objects.all()
         items = Item.objects.all()
         context={
@@ -282,7 +285,8 @@ def addToCart(request):
         return render(request,"pages/tienda.html",context)
     else:
         usuarios = Usuario.objects.all()
-        productos = Producto.objects.all()
+        tipo = TipoProducto.objects.get(tipo = "Bicicleta")
+        productos = Producto.objects.all().filter(id_tipo_producto = tipo)
         carritos = Carrito.objects.all()
         items = Item.objects.all()
         context={
@@ -305,7 +309,8 @@ def delToCart(request,pk):
         item.delete()
 
         usuarios = Usuario.objects.all()
-        productos = Producto.objects.all()
+        tipo = TipoProducto.objects.get(tipo = "Bicicleta")
+        productos = Producto.objects.all().filter(id_tipo_producto = tipo)
         carritos = Carrito.objects.all()
         items = Item.objects.all()
         context={
@@ -317,7 +322,8 @@ def delToCart(request,pk):
         return render(request,"pages/tienda.html",context)
     except:
         usuarios = Usuario.objects.all()
-        productos = Producto.objects.all()
+        tipo = TipoProducto.objects.get(tipo = "Bicicleta")
+        productos = Producto.objects.all().filter(id_tipo_producto = tipo)
         carritos = Carrito.objects.all()
         items = Item.objects.all()
         context={
@@ -370,7 +376,8 @@ def pagarCart(request):
             carrito.save()
 
             usuarios = Usuario.objects.all()
-            productos = Producto.objects.all()
+            tipo = TipoProducto.objects.get(tipo = "Bicicleta")
+            productos = Producto.objects.all().filter(id_tipo_producto = tipo)
             carritos = Carrito.objects.all()
             items = Item.objects.all()
             context={
@@ -382,7 +389,8 @@ def pagarCart(request):
             return render(request,"pages/tienda.html",context)
         except:
             usuarios = Usuario.objects.all()
-            productos = Producto.objects.all()
+            tipo = TipoProducto.objects.get(tipo = "Bicicleta")
+            productos = Producto.objects.all().filter(id_tipo_producto = tipo)
             carritos = Carrito.objects.all()
             items = Item.objects.all()
             context={
@@ -394,7 +402,8 @@ def pagarCart(request):
             return render(request,"pages/tienda.html",context)
     else:
         usuarios = Usuario.objects.all()
-        productos = Producto.objects.all()
+        tipo = TipoProducto.objects.get(tipo = "Bicicleta")
+        productos = Producto.objects.all().filter(id_tipo_producto = tipo)
         carritos = Carrito.objects.all()
         items = Item.objects.all()
         context={

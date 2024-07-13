@@ -34,15 +34,19 @@
                                                     {% if item.id_carrito == cart %}
                                                     <div class="carrito-item mb-3">
                                                         <div class="d-flex">
-                                                            <img src="{% static item.id_producto.foto %}" class="img-fluid" style="width: 50px; height: 50px;" alt="{{ item.id_producto.nombre }}">
-                                                            <div class="ml-3">
-                                                                <h5>{{ item.id_producto.nombre }}</h5>
-                                                                <p>Cantidad: {{ item.cantidad }}</p>
-                                                                <p>Precio unitario: ${{ item.id_producto.precio }}</p>
+                                                            <div class="col mx-auto">
+                                                                <img src="{% static item.id_producto.foto %}" class="img-fluid" style="width: 100%;" alt="{{ item.id_producto.nombre }}">
                                                             </div>
-                                                            <a href="{% url 'delToCart' pk=item.id_item %}">
-                                                                <button class="btn btn-outline-danger">Eliminar</button>
-                                                            </a>
+                                                            <div class="col mx-auto">
+                                                                <h5>{{ item.id_producto.nombre }}</h5>
+                                                            </div>
+                                                            <div class="col mx-auto">
+                                                                <p>Cantidad: {{ item.cantidad }}</p>
+                                                                <p>Subtotal: ${{item.subtotal}}</p>
+                                                                <a href="{% url 'delToCart' pk=item.id_item %}">
+                                                                    <button class="btn btn-outline-danger">Eliminar</button>
+                                                                </a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     {% endif %}
