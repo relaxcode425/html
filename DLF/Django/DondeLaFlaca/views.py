@@ -122,7 +122,16 @@ def registrar(request):
                 )
                 usuario.save()
 
-                return redirect('login')
+                carrito = Carrito.objects.get(rut=usuario)
+                carrito.save()
+                
+                carritos = Carrito.objects.all()
+                usuarios = Usuario.objects.all()
+                context={
+                    "usuarios":usuarios,
+                    "carritos":carritos
+                }
+                return render(request, 'pages/Principal.html', context)
         else:
             context={
                 "message":"Sus contraseñas no coinciden",
