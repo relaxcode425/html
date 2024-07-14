@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.db.models import Q
 from .models import TipoUsuario,Usuario,TipoProducto,Producto,FormaPago,Pago,Detalle,Despacho,Carrito,Item
 from .forms import TipoUsuarioForm, UsuarioForm, TipoProductoForm, FormaPagoForm
+from django.utils import timezone
 
 # Create your views here.
 def Principal(request):
@@ -68,6 +69,7 @@ def Tienda_indumentaria(request):
     return render(request, 'pages/Tienda.html', context)
 @login_required
 def pago_carrito(request):
+    formasPago = FormaPago.objects.all()
     usuarios = Usuario.objects.all()
     productos = Producto.objects.all()
     carritos = Carrito.objects.all()
@@ -81,6 +83,7 @@ def pago_carrito(request):
             confirm = True
             item = i
     context={
+        "formasPago":formasPago,
         "usuarios":usuarios,
         "productos":productos,
         "carritos":carritos,
@@ -118,9 +121,8 @@ def registrar(request):
                     user=user
                 )
                 usuario.save()
-                login(request,user)
 
-                return redirect('Principal')
+                return redirect('login')
         else:
             context={
                 "message":"Sus contraseñas no coinciden",
@@ -338,16 +340,22 @@ def pagarCart(request):
     user = request.user
     usuario = Usuario.objects.get(user=user)
     carrito = Carrito.objects.get(rut=usuario)
-    items = Item.objects.all()
-    if items:
+    items = Item.objects.all().filter(id_carrito = carrito)
+    if request.method == 'POST':
         try:
             total = 0
             for tmp in items:
                 if tmp.id_carrito == carrito:
                     subtotal = tmp.cantidad * tmp.id_producto.precio
                     total = total + subtotal
-            forma = FormaPago.objects.get(forma='Tarjeta')
+            seleccionado = request.POST.get("formaDePago")
+            forma = FormaPago.objects.get(id_forma_pago = seleccionado)
+            check = request.POST.get("despacho")
             domicilio = False
+            if check:
+                domicilio = True
+            else:
+                domicilio = False
             pago = Pago(
                 rut = usuario,
                 total = total,
@@ -355,6 +363,13 @@ def pagarCart(request):
                 domicilio = domicilio
             )
             pago.save()
+            if check:
+                tiempo = timezone.now()
+                despa = Despacho(
+                    id_pago = pago,
+                    pedido = tiempo
+                )
+                despa.save()
             for tmp in items:
                 if tmp.id_carrito == carrito:
                     subtotal = tmp.cantidad * tmp.id_producto.precio
