@@ -481,63 +481,7 @@ def del_tipoUsuario(request, pk):
             "mensaje": "Error,Tipo de usuario no encontrado...",
         }
         return render(request, "pages/Crud/despliegue/crud_varios.html", context)
-def add_forma_pago(request):
-    form = FormaPagoForm()
-    if request.method=="POST":
-        nuevo = FormaPagoForm(request.POST)
-        if nuevo.is_valid():
-            nuevo.save()
-
-            context={
-                "mensaje":"Agregado con exito",
-                "form":form
-            }
-            return render(request,"pages/Crud/agregar/add_formaPago.html",context)
-    else:
-        context = {
-            "form":form
-        }
-        return render(request,"pages/Crud/agregar/add_formaPago.html",context)
-def add_tipo_producto(request):
-    form = TipoProductoForm()
-    if request.method=="POST":
-        nuevo = TipoProductoForm(request.POST)
-        if nuevo.is_valid():
-            nuevo.save()
-
-            context={
-                "mensaje":"Agregado con exito",
-                "form":form
-            }
-            return render(request,"pages/Crud/agregar/add_tipoProducto.html",context)
-    else:
-        context = {
-            "form":form
-        }
-        return render(request,"pages/Crud/agregar/add_tipoProducto.html",context)
-def add_usuario(request):
-    form = UsuarioForm()
-    if request.method == "POST":
-        nuevo = UsuarioForm(request.POST)
-        if nuevo.is_valid():
-            usuario_data = nuevo.cleaned_data
-            user = User.objects.create_user(
-                username=usuario_data["username"],
-                password=usuario_data["password"],
-            )
-            usuario = Usuario(
-                user=user,
-                rut=usuario_data["rut"],
-                id_tipo_usuario=usuario_data["id_tipo_usuario"],
-            )
-            usuario.save()
-            return redirect("Principal")  # redirect to a success page
-    context = {
-        "form": form
-    }
-    return render(request, "pages/Crud/agregar/add_usuario.html", context)
 def edit_tipoUser(request,pk):
-
     try:
         tipoUsuarios=TipoUsuario.objects.get(id_tipo_usuario=pk)
         context={}
@@ -564,86 +508,24 @@ def edit_tipoUser(request,pk):
         mensaje="id no existe"
         context={'mensaje': mensaje, 'tipoUsuarios': tipoUsuarios}
         return render(request, "pages/Crud/despliegue/crud_varios.html", context)
-def del_tipoUsuario(request, pk):
-    try:
-        tipoUsuario = TipoUsuario.objects.get(id_tipo_usuario=pk)
-        tipoUsuario.delete()
 
-        tipoUsuarios = TipoUsuario.objects.all()
-        formaPago = FormaPago.objects.all()
-        tipoProducto = TipoProducto.objects.all()
-        context = {
-            "tipoUsuarios": tipoUsuarios,
-            "formaPago" : formaPago,
-            "tipoProducto" : tipoProducto,
-            "mensaje": "Registro Eliminado",
-        }
-        return render(request, "pages/Crud/despliegue/crud_varios.html", context)
-    except:
-        tipoUsuarios = TipoUsuario.objects.all()
-        formaPago = FormaPago.objects.all()
-        tipoProducto = TipoProducto.objects.all()
-        context = {
-            "tipoUsuarios": tipoUsuarios,
-            "formaPago" : formaPago,
-            "tipoProducto" : tipoProducto,
-            "mensaje": "Error,Tipo de usuario no encontrado...",
-        }
-        return render(request, "pages/Crud/despliegue/crud_varios.html", context)
-def del_tipoProducto(request, pk):
-    try:
-        tipoProducto = TipoProducto.objects.get(id_tipo_producto=pk)
-        tipoProducto.delete()
+def add_forma_pago(request):
+    form = FormaPagoForm()
+    if request.method=="POST":
+        nuevo = FormaPagoForm(request.POST)
+        if nuevo.is_valid():
+            nuevo.save()
 
-        tipoUsuarios = TipoUsuario.objects.all()
-        formaPago = FormaPago.objects.all()
-        tipoProducto = TipoProducto.objects.all()
+            context={
+                "mensaje":"Agregado con exito",
+                "form":form
+            }
+            return render(request,"pages/Crud/agregar/add_formaPago.html",context)
+    else:
         context = {
-            "tipoUsuarios": tipoUsuarios,
-            "formaPago" : formaPago,
-            "tipoProducto" : tipoProducto,
-            "mensaje": "Registro Eliminado",
+            "form":form
         }
-        return render(request, "pages/Crud/despliegue/crud_varios.html", context)
-    except:
-        tipoUsuarios = TipoUsuario.objects.all()
-        formaPago = FormaPago.objects.all()
-        tipoProducto = TipoProducto.objects.all()
-        context = {
-            "tipoUsuarios": tipoUsuarios,
-            "formaPago" : formaPago,
-            "tipoProducto" : tipoProducto,
-            "mensaje": "Error,Tipo de usuario no encontrado...",
-        }
-        return render(request, "pages/Crud/despliegue/crud_varios.html", context)
-def edit_tipoProducto(request,pk):
-
-    try:
-        tipoProducto=TipoProducto.objects.get(id_tipo_producto=pk)
-        context={}
-        if tipoProducto:
-            print("Se encontró el tipo de usuario")
-            if request.method=="POST":
-                print("es POST")
-                form = TipoProductoForm(request.POST, instance=tipoProducto)
-                form.save()
-                mensaje="Se actualizó el tipo de usuario"
-                print(mensaje)
-                context={'tipoProducto':tipoProducto, 'form': form, 'mensaje': mensaje}
-                return render(request, "pages/Crud/editar/edit_tipoProducto.html", context)
-            else:
-                #no es POST
-                print("No es POST")
-                form = TipoProductoForm(instance=tipoProducto)
-                mensaje=""
-                context={'tipoProducto':tipoProducto, 'form': form, 'mensaje': mensaje}
-                return render(request, "pages/Crud/editar/edit_tipoProducto.html", context)
-    except:
-        print("Error, id no existe")
-        tipoProducto = TipoProducto.objects.all()
-        mensaje="id no existe"
-        context={'mensaje': mensaje, 'tipoProducto': tipoProducto}
-        return render(request, "pages/Crud/despliegue/crud_varios.html", context)
+        return render(request,"pages/Crud/agregar/add_formaPago.html",context)
 def edit_formaPago(request,pk):
 
     try:
@@ -697,4 +579,175 @@ def del_formaPago(request, pk):
             "tipoProducto" : tipoProducto,
             "mensaje": "Error,Tipo de usuario no encontrado...",
         }
+        return render(request, "pages/Crud/despliegue/crud_varios.html", context)
+
+def add_usuario(request):
+    form = UsuarioForm()
+    if request.method == "POST":
+        nuevo = UsuarioForm(request.POST)
+        if nuevo.is_valid():
+            usuario_data = nuevo.cleaned_data
+            user = User.objects.create_user(
+                username=usuario_data["username"],
+                password=usuario_data["password"],
+            )
+            usuario = Usuario(
+                user=user,
+                rut=usuario_data["rut"],
+                id_tipo_usuario=usuario_data["id_tipo_usuario"],
+            )
+            usuario.save()
+            return redirect("crud-usuarios")
+    context = {
+        "form": form
+    }
+    return render(request, "pages/Crud/agregar/add_usuario.html", context)
+def del_usuario(request, pk):
+    try:
+        usuario = Usuario.objects.get(rut=pk)
+        user = User.objects.get(username=usuario.user.username)
+        user.delete()
+        usuario.delete()
+
+        usuarios = Usuario.objects.all()
+        tipoUsuarios = TipoUsuario.objects.all()
+        context={
+            "mensaje" : "Registro eliminado",
+            "usuarios" : usuarios,
+            "tipoUsuarios": tipoUsuarios,
+        }
+        return render(request, 'pages/Crud/despliegue/crud_usuarios.html', context)
+    except:
+        usuarios = Usuario.objects.all()
+        tipoUsuarios = TipoUsuario.objects.all()
+        context={
+            "usuarios" : usuarios,
+            "tipoUsuarios": tipoUsuarios,
+        }
+        return render(request, 'pages/Crud/despliegue/crud_usuarios.html', context)
+def edit_usuario(request,pk):
+
+    us = Usuario.objects.get(rut = pk)
+    user = User.objects.get(username=us.user.username)
+
+    username = user.username
+    rut = us.rut
+    first_name = user.first_name
+    last_name = user.last_name
+    email = user.email
+    tipo = us.id_tipo_usuario
+
+    if request.method == 'POST':
+
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        email = request.POST.get('email')
+        id_tipo = request.POST.get("tipousuario")
+        id_tipo_usuario = TipoUsuario.objects.get(id_tipo_usuario=id_tipo)
+
+        
+        user.first_name=first_name
+        user.last_name=last_name
+        user.email=email
+        
+        user.save()
+
+        us.id_tipo_usuario=id_tipo_usuario
+        
+        us.save()
+        tipos = TipoUsuario.objects.all()
+        context={
+            "message":"Actualizado correctamente",
+            "tipos":tipos,
+            "tipo":tipo,
+            "username":username,
+            "rut":rut,
+            "first_name":first_name,
+            "last_name":last_name,
+            "email":email
+        }
+        return render(request,"pages/Crud/editar/edit_usuario.html",context)
+    else:
+        tipos = TipoUsuario.objects.all()
+        context={
+            "tipos":tipos,
+            "tipo":tipo,
+            "username":username,
+            "rut":rut,
+            "first_name":first_name,
+            "last_name":last_name,
+            "email":email
+        }
+        return render(request,"pages/Crud/editar/edit_usuario.html",context)
+
+def add_tipo_producto(request):
+    form = TipoProductoForm()
+    if request.method=="POST":
+        nuevo = TipoProductoForm(request.POST)
+        if nuevo.is_valid():
+            nuevo.save()
+
+            context={
+                "mensaje":"Agregado con exito",
+                "form":form
+            }
+            return render(request,"pages/Crud/agregar/add_tipoProducto.html",context)
+    else:
+        context = {
+            "form":form
+        }
+        return render(request,"pages/Crud/agregar/add_tipoProducto.html",context)
+def del_tipoProducto(request, pk):
+    try:
+        tipoProducto = TipoProducto.objects.get(id_tipo_producto=pk)
+        tipoProducto.delete()
+
+        tipoUsuarios = TipoUsuario.objects.all()
+        formaPago = FormaPago.objects.all()
+        tipoProducto = TipoProducto.objects.all()
+        context = {
+            "tipoUsuarios": tipoUsuarios,
+            "formaPago" : formaPago,
+            "tipoProducto" : tipoProducto,
+            "mensaje": "Registro Eliminado",
+        }
+        return render(request, "pages/Crud/despliegue/crud_varios.html", context)
+    except:
+        tipoUsuarios = TipoUsuario.objects.all()
+        formaPago = FormaPago.objects.all()
+        tipoProducto = TipoProducto.objects.all()
+        context = {
+            "tipoUsuarios": tipoUsuarios,
+            "formaPago" : formaPago,
+            "tipoProducto" : tipoProducto,
+            "mensaje": "Error,Tipo de usuario no encontrado...",
+        }
+        return render(request, "pages/Crud/despliegue/crud_varios.html", context)
+def edit_tipoProducto(request,pk):
+
+    try:
+        tipoProducto=TipoProducto.objects.get(id_tipo_producto=pk)
+        context={}
+        if tipoProducto:
+            print("Se encontró el tipo de usuario")
+            if request.method=="POST":
+                print("es POST")
+                form = TipoProductoForm(request.POST, instance=tipoProducto)
+                form.save()
+                mensaje="Se actualizó el tipo de usuario"
+                print(mensaje)
+                context={'tipoProducto':tipoProducto, 'form': form, 'mensaje': mensaje}
+                return render(request, "pages/Crud/editar/edit_tipoProducto.html", context)
+            else:
+                #no es POST
+                print("No es POST")
+                form = TipoProductoForm(instance=tipoProducto)
+                mensaje=""
+                context={'tipoProducto':tipoProducto, 'form': form, 'mensaje': mensaje}
+                return render(request, "pages/Crud/editar/edit_tipoProducto.html", context)
+    except:
+        print("Error, id no existe")
+        tipoProducto = TipoProducto.objects.all()
+        mensaje="id no existe"
+        context={'mensaje': mensaje, 'tipoProducto': tipoProducto}
         return render(request, "pages/Crud/despliegue/crud_varios.html", context)

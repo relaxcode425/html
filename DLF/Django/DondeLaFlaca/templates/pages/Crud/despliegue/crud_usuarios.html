@@ -61,9 +61,9 @@
                                                         {% else %}
                                                             <td>{{tipo.tipo}}</td>
                                                             {% if tipo.tipo != 'Admin' %}
-                                                                <td><a href=""><button
+                                                                <td><a href="{% url 'edit-usuario' pk=tmp.rut %}"><button
                                                                     class="btn btn-warning">Modificar</button></a></td>
-                                                                <td><a href=""><button
+                                                                <td><a href="{% url 'del-usuario' pk=tmp.rut %}"><button
                                                                     class="btn btn-danger">Eliminar</button></a></td>
                                                             {% else %}
                                                                 <td><button class="btn btn-secondary">Modificar</button></td>

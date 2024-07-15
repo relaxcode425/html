@@ -17,7 +17,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 shadow-lg mx-auto text-center p-3">
-                    {% if request.session.tipo == 'Admin' %}
+                    {% if request.session.tipo == 'Admin' or request.session.tipo == 'Administrador' %}
                         <h4>Formulario para Tipo de Usuario:</h4>
                         <br><br>
                         <form action="" method="POST">
