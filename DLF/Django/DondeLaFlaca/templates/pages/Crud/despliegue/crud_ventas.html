@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mantenedor</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'style.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"> 
+</head>
+
+<body>
+    {% include 'base/header_admin.html' %}
+    <main>
+        <div class="container">
+            {% if request.session.tipo != 'Cliente' %}
+                {% if request.session.tipo == 'Admin' or request.session.tipo == 'Administrador' %}
+                    <div class="row">
+                        <div class="col-md-8 shadow-lg mx-auto text-center p-3">
+                            {% if request.user.is_authenticated %}
+                                <h3>Bienvenido {{request.user.username }}</h3>
+                            {% else %}
+                                <h3>Bienvenido Invitado</h3>
+                            {% endif%}
+                            <h2 class="my-3">Lista Ventas</h2>
+                            <br>
+                            <table class="table table-dark table-hover table-bordered">
+                                <thead>
+                                    <th>Id</th>
+                                    <th>Usuario</th>
+                                    <th>Total</th>
+                                    <th>Forma de pago</th>
+                                    <th>Modificar</th>
+                                    <th>Eliminar</th>
+                                </thead>
+                                <tbody>
+                                    {% if pagos %}
+                                        {% for tmp in pagos %}
+                                            <tr>
+                                                <td>{{tmp.id_pago}}</td>
+                                                {% if usuarios %}
+                                                    {% for us in usuarios %}
+                                                        {% if tmp.rut.rut == us.rut %}
+                                                            <td>{{us.user.username}}</td>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                {% endif %}
+                                                <td>
+                                                    <details>
+                                                        <summary>{{tmp.total}}</summary>
+                                                        <table class="table table-dark table-striped d-block">
+                                                            <thead>
+                                                                <th>Id Detalle</th>
+                                                                <th>Producto</th>
+                                                                <th>Cantidad</th>
+                                                                <th>Subtotal</th>
+                                                            </thead>
+                                                            <tbody>
+                                                                {% if detalles %}
+                                                                {% for det in detalles %}
+                                                                    {% if det.id_pago.id_pago == tmp.id_pago %}
+                                                                        <tr>
+                                                                            <td>{{det.id_detalle}}</td>
+                                                                            <td>{{det.id_producto.nombre}}</td>
+                                                                            <td>{{det.cantidad}}</td>
+                                                                            <td>{{det.subtotal}}</td>
+                                                                        </tr>
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                                {% endif %}
+                                                            </tbody>
+                                                        </table>
+                                                    </details>
+                                                </td>
+                                                {% if formapagos %}
+                                                    {% for forma in formapagos %}
+                                                        {% if tmp.id_forma_pago.id_forma_pago == forma.id_forma_pago %}
+                                                            <td>{{forma.forma}}</td>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                {% endif %}
+                                                <td><a href=""><button class="btn btn-warning">Modificar</button></a></td>
+                                                <td><a href=""><button class="btn btn-danger">Eliminar</button></a></td>
+                                            </tr>
+                                        {% endfor%}
+                                    {% endif %}
+                                </tbody>
+                            </table>
+                            {% if mensaje%}
+                                <div class="alert alert-danger w-50 mx-auto">
+                                    {{mensaje}}
+                                </div>
+                            {% endif%}
+                            <a href="{% url 'add-tipo-usuario' %}">
+                                <button class="btn btn-primary">Agregar Registro</button>
+                            </a>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                {% endif %}
+            {% else %}
+                <div class="row">
+                    <div class="col-md-8 shadow-lg mx-auto text-center p-3">
+                        <h1>Error</h1>
+                        <h4>Vuelva a la página principal...</h4>
+                        <a href="{% url 'Principal' %}">
+                            <button class="btn btn-outline-primary my-1">
+                                Inicio
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            {% endif %}
+            <br>
+            <br>
+        </div>
+    </main>
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+
+</html>

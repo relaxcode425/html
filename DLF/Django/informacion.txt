@@ -48,9 +48,9 @@ LOS TIPOS DE PRODUCTO:
     - (listo) crear urls e implementarlos en el carrito y en la pagina para realizar el pago respectivamente.
 
 -> agregar los crud que faltan y filrar informacion en los html de la carpeta 'despliegue', 'agregar' y 'editar' según el tipo de usuario
-    - crud de productos
-    - crud de pagos y detalle juntos
-    - add, edit y delete de usuarios
+    - (falta editar y eliminar)crud de productos
+    - (estás en eso)crud de pagos y detalle juntos
+    - (listo)add, edit y delete de usuarios
 
 -> modificar el view de añadir productos al carrito para evitar duplicar productos en 'Items'
 

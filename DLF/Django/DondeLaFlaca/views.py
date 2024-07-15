@@ -259,6 +259,26 @@ def crud_usuarios(request):
         "tipoUsuarios": tipoUsuarios,
     }
     return render(request, 'pages/Crud/despliegue/crud_usuarios.html', context)
+
+@login_required
+def crud_ventas(request):
+    formapago = FormaPago.objects.all()
+    tipoproducto = TipoProducto.objects.all()
+    producto = Producto.objects.all()
+    usuarios = Usuario.objects.all()
+    users = User.objects.all()
+    pago = Pago.objects.all()
+    detalle = Detalle.objects.all()
+    context={
+        "usuarios":usuarios,
+        "users":users,
+        "formapagos":formapago,
+        "tipoproductos":tipoproducto,
+        "productos":producto,
+        "pagos":pago,
+        "detalles":detalle
+    }
+    return render(request, 'pages/Crud/despliegue/crud_ventas.html', context)
 """ ------------------------------------------------------------------------------------ """
 @login_required
 def addToCart(request):
@@ -307,7 +327,7 @@ def addToCart(request):
             "items":items
         }
         return render(request,"pages/tienda.html",context)
-
+@login_required
 def delToCart(request,pk):
     try:
         item = Item.objects.get(id_item=pk)
@@ -344,7 +364,7 @@ def delToCart(request,pk):
             "items":items
         }
         return render(request,"pages/tienda.html",context)
-
+@login_required
 def pagarCart(request):
     user = request.user
     usuario = Usuario.objects.get(user=user)
@@ -438,6 +458,7 @@ def pagarCart(request):
         }
         return render(request,"pages/tienda.html",context)
 """ ------------------------------------------------------------------------------------- """
+@login_required
 def add_tipoUsuario(request):
     form = TipoUsuarioForm()
     if request.method=="POST":
@@ -455,6 +476,7 @@ def add_tipoUsuario(request):
             "form":form
         }
         return render(request,"pages/Crud/agregar/add_TipoUser.html",context)
+@login_required
 def del_tipoUsuario(request, pk):
     try:
         tipoUsuario = TipoUsuario.objects.get(id_tipo_usuario=pk)
@@ -481,6 +503,7 @@ def del_tipoUsuario(request, pk):
             "mensaje": "Error,Tipo de usuario no encontrado...",
         }
         return render(request, "pages/Crud/despliegue/crud_varios.html", context)
+@login_required
 def edit_tipoUser(request,pk):
     try:
         tipoUsuarios=TipoUsuario.objects.get(id_tipo_usuario=pk)
@@ -509,6 +532,7 @@ def edit_tipoUser(request,pk):
         context={'mensaje': mensaje, 'tipoUsuarios': tipoUsuarios}
         return render(request, "pages/Crud/despliegue/crud_varios.html", context)
 
+@login_required
 def add_forma_pago(request):
     form = FormaPagoForm()
     if request.method=="POST":
@@ -526,6 +550,7 @@ def add_forma_pago(request):
             "form":form
         }
         return render(request,"pages/Crud/agregar/add_formaPago.html",context)
+@login_required
 def edit_formaPago(request,pk):
 
     try:
@@ -554,6 +579,7 @@ def edit_formaPago(request,pk):
         mensaje="id no existe"
         context={'mensaje': mensaje, 'formaPago': formaPago}
         return render(request, "pages/Crud/despliegue/crud_varios.html", context)
+@login_required
 def del_formaPago(request, pk):
     try:
         formaPago = FormaPago.objects.get(id_forma_pago=pk)
@@ -581,6 +607,7 @@ def del_formaPago(request, pk):
         }
         return render(request, "pages/Crud/despliegue/crud_varios.html", context)
 
+@login_required
 def add_usuario(request):
     form = UsuarioForm()
     if request.method == "POST":
@@ -602,6 +629,7 @@ def add_usuario(request):
         "form": form
     }
     return render(request, "pages/Crud/agregar/add_usuario.html", context)
+@login_required
 def del_usuario(request, pk):
     try:
         usuario = Usuario.objects.get(rut=pk)
@@ -625,6 +653,7 @@ def del_usuario(request, pk):
             "tipoUsuarios": tipoUsuarios,
         }
         return render(request, 'pages/Crud/despliegue/crud_usuarios.html', context)
+@login_required
 def edit_usuario(request,pk):
 
     us = Usuario.objects.get(rut = pk)
@@ -680,6 +709,7 @@ def edit_usuario(request,pk):
         }
         return render(request,"pages/Crud/editar/edit_usuario.html",context)
 
+@login_required
 def add_tipo_producto(request):
     form = TipoProductoForm()
     if request.method=="POST":
@@ -697,6 +727,7 @@ def add_tipo_producto(request):
             "form":form
         }
         return render(request,"pages/Crud/agregar/add_tipoProducto.html",context)
+@login_required
 def del_tipoProducto(request, pk):
     try:
         tipoProducto = TipoProducto.objects.get(id_tipo_producto=pk)
@@ -723,6 +754,7 @@ def del_tipoProducto(request, pk):
             "mensaje": "Error,Tipo de usuario no encontrado...",
         }
         return render(request, "pages/Crud/despliegue/crud_varios.html", context)
+@login_required
 def edit_tipoProducto(request,pk):
 
     try:
