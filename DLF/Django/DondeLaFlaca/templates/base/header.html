@@ -80,10 +80,11 @@
                         {% endif %}
                         <ul class="dropdown-menu">
                           {% if request.session.tipo == 'Cliente' %}
-                            <li><a class="dropdown-item" href="">isadgjweufuiwhsiqeh</a></li>
+                            <li><a class="dropdown-item" href="{% url 'crud-ventas' pk=0 %}">Compras</a></li>
                           {% else %}
                             <li><a class="dropdown-item" href="{% url 'crud-usuarios' %}">Usuarios</a></li>
-                            <li><a class="dropdown-item" href="{% url 'crud-ventas' %}">Ventas</a></li>
+                            <li><a class="dropdown-item" href="{% url 'crud-ventas' pk=1 %}">Ventas</a></li>
+                            <li><a class="dropdown-item" href="{% url 'crud-ventas' pk=0 %}">Compras</a></li>
                             <li><a class="dropdown-item" href="{% url 'crud-varios' %}">Varios</a></li>
                             <li><a class="dropdown-item" href="{% url 'crud-productos' %}">Productos</a></li>
                           {% endif %}

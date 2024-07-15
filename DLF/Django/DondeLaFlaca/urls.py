@@ -24,7 +24,7 @@ urlpatterns = [
     path('crud-productos', views.crud_productos, name='crud-productos'),
     path('crud-usuarios', views.crud_usuarios, name='crud-usuarios'),
     path('crud-varios', views.crud_varios, name='crud-varios'),
-    path('crud-ventas', views.crud_ventas, name='crud-ventas'),
+    path('crud-ventas/<int:pk>', views.crud_ventas, name='crud-ventas'),
 
     path('add-tipo-usuario', views.add_tipoUsuario, name='add-tipo-usuario'),
     path('add-usuario', views.add_usuario, name='add-usuario'),

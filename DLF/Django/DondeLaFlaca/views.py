@@ -83,6 +83,7 @@ def pago_carrito(request):
             confirm = True
             item = i
     context={
+        "confirmado":"confirmado",
         "formasPago":formasPago,
         "usuarios":usuarios,
         "productos":productos,
@@ -122,9 +123,12 @@ def registrar(request):
                 )
                 usuario.save()
 
-                carrito = Carrito.objects.get(rut=usuario)
+                carrito = Carrito(rut=usuario)
                 carrito.save()
                 
+                login(request,user)
+                request.session["tipo"] = usuario.id_tipo_usuario.tipo
+
                 carritos = Carrito.objects.all()
                 usuarios = Usuario.objects.all()
                 context={
@@ -261,23 +265,51 @@ def crud_usuarios(request):
     return render(request, 'pages/Crud/despliegue/crud_usuarios.html', context)
 
 @login_required
-def crud_ventas(request):
+def crud_ventas(request,pk):
     formapago = FormaPago.objects.all()
     tipoproducto = TipoProducto.objects.all()
     producto = Producto.objects.all()
     usuarios = Usuario.objects.all()
     users = User.objects.all()
-    pago = Pago.objects.all()
+    us = Usuario.objects.get(user=request.user)
+    rut = us.rut
+    pago = Pago.objects.all().filter(rut = rut)
+
+    f = 'filtro'
+    c = False
+    if pk == 0:
+        pago = Pago.objects.all().filter(rut = rut)
+    elif pk == 1:
+        pago = Pago.objects.all()
+        f = 'sin'
+        if us.id_tipo_usuario.tipo == 'Cliente':
+            c = True
+    else:
+        pago = Pago.objects.all().filter(rut = rut)
     detalle = Detalle.objects.all()
-    context={
-        "usuarios":usuarios,
-        "users":users,
-        "formapagos":formapago,
-        "tipoproductos":tipoproducto,
-        "productos":producto,
-        "pagos":pago,
-        "detalles":detalle
-    }
+    if c:
+        context={
+            "f":f,
+            "usuarios":usuarios,
+            "users":users,
+            "formapagos":formapago,
+            "tipoproductos":tipoproducto,
+            "productos":producto,
+            "pagos":pago,
+            "detalles":detalle
+        }
+    else:
+        context={
+            "f":f,
+            "a":"sssss",
+            "usuarios":usuarios,
+            "users":users,
+            "formapagos":formapago,
+            "tipoproductos":tipoproducto,
+            "productos":producto,
+            "pagos":pago,
+            "detalles":detalle
+        }
     return render(request, 'pages/Crud/despliegue/crud_ventas.html', context)
 """ ------------------------------------------------------------------------------------ """
 @login_required
@@ -420,17 +452,31 @@ def pagarCart(request):
             carrito.save()
 
             usuarios = Usuario.objects.all()
-            tipo = TipoProducto.objects.get(tipo = "Bicicleta")
-            productos = Producto.objects.all().filter(id_tipo_producto = tipo)
             carritos = Carrito.objects.all()
             items = Item.objects.all()
+
+            formasPago = FormaPago.objects.all()
+            productos = Producto.objects.all()
+            carritos = Carrito.objects.all()
+            items = Item.objects.all()
+            usuario = Usuario.objects.get(user=request.user)
+            carrito = Carrito.objects.get(rut=usuario)
+            
+            confirm = False
+            for i in items:
+                if i.id_carrito == carrito:
+                    confirm = True
+                    item = i
             context={
+                "message":"Compra exitosa...",
+                "formasPago":formasPago,
                 "usuarios":usuarios,
                 "productos":productos,
                 "carritos":carritos,
-                "items":items
+                "items":items,
+                "confirm":confirm
             }
-            return render(request,"pages/tienda.html",context)
+            return render(request, 'pages/pago_carrito.html', context)
         except:
             usuarios = Usuario.objects.all()
             tipo = TipoProducto.objects.get(tipo = "Bicicleta")

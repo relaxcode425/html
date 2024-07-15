@@ -19,117 +19,134 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-10 shadow-lg mx-auto text-center p-3">
-                    <div class="row">
-                        {% if confirm %}
-                            <div class="col">
-                                <div id="carrito-items">
-                                    {% if usuarios %}
-                                    {% for us in usuarios %}
-                                        {% if us.user == request.user %}
-                                        {% if carritos %}
-                                            {% for cart in carritos %}
-                                            {% if us == cart.rut %}
-                                                {% if items %}
-                                                {% for item in items %}
-                                                    {% if item.id_carrito == cart %}
-                                                    <div class="carrito-item mb-3">
-                                                        <div class="d-flex">
-                                                            <div class="col mx-auto">
-                                                                <img src="{% static item.id_producto.foto %}" class="img-fluid" style="width: 100%;" alt="{{ item.id_producto.nombre }}">
-                                                            </div>
-                                                            <div class="col mx-auto">
-                                                                <h5>{{ item.id_producto.nombre }}</h5>
-                                                            </div>
-                                                            <div class="col mx-auto">
-                                                                <p>Cantidad: {{ item.cantidad }}</p>
-                                                                <p>Subtotal: ${{item.subtotal}}</p>
-                                                                <a href="{% url 'delToCart' pk=item.id_item %}">
-                                                                    <button class="btn btn-outline-danger">Eliminar</button>
-                                                                </a>
+                    {% if confirmado %}
+                        <div class="row">
+                            {% if confirm %}
+                                <div class="col">
+                                    <div id="carrito-items">
+                                        {% if usuarios %}
+                                        {% for us in usuarios %}
+                                            {% if us.user == request.user %}
+                                            {% if carritos %}
+                                                {% for cart in carritos %}
+                                                {% if us == cart.rut %}
+                                                    {% if items %}
+                                                    {% for item in items %}
+                                                        {% if item.id_carrito == cart %}
+                                                        <div class="carrito-item mb-3">
+                                                            <div class="d-flex">
+                                                                <div class="col mx-auto">
+                                                                    <img src="{% static item.id_producto.foto %}" class="img-fluid" style="width: 100%;" alt="{{ item.id_producto.nombre }}">
+                                                                </div>
+                                                                <div class="col mx-auto">
+                                                                    <h5>{{ item.id_producto.nombre }}</h5>
+                                                                </div>
+                                                                <div class="col mx-auto">
+                                                                    <p>Cantidad: {{ item.cantidad }}</p>
+                                                                    <p>Subtotal: ${{item.subtotal}}</p>
+                                                                    <a href="{% url 'delToCart' pk=item.id_item %}">
+                                                                        <button class="btn btn-outline-danger">Eliminar</button>
+                                                                    </a>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                        {% endif %}
+                                                    {% endfor %}
                                                     {% endif %}
-                                                {% endfor %}
                                                 {% endif %}
-                                            {% endif %}
-                                            {% endfor %}
-                                        {% endif %}
-                                        {% endif %}
-                                    {% endfor %}
-                                    {% endif %}
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="col-12 mx-auto shadow-lg p-2" style="border-radius: 8px;">
-                                    <div>
-                                        <h4>Formulario de pago</h4>
-                                    </div>
-                                    <form action="{% url 'pagarCart' %}" id="Pago" name="Pago" method="POST" class="col mx-auto shadow-lg text-center mt-3 p-3">
-                                        {% csrf_token %}
-                                        <div class="form-floating mx-auto d-flex m-0">
-                                            <p class="my-auto p-1">Seleccione una forma de pago:</p>
-                                            <select name="formaDePago" id="formaDePago">
-                                                {% for forma in formasPago %}
-                                                    {% if forma.forma != 'Efectivo' %}
-                                                        <option value="{{forma.id_forma_pago}}">{{forma.forma}}</option>
-                                                    {% endif %}
                                                 {% endfor %}
-                                            </select>
-                                        </div>
-                                        <br>
-                                        <div class="form-floating mx-auto d-flex m-1">
-                                            <input type="text" id="numTarjeta" name="numTarjeta" placeholder="" class="form-control">
-                                            <label for="numTarjeta" style="opacity: 50%;">Ingrese el número de la tarjeta</label>
-                                        </div>
-                                        <div class="form-floating mx-auto d-flex m-1">
-                                            <div class="p-1 mx-auto">
-                                                <p>Fecha de caducidad:</p>
-                                                <div>
-                                                    <input type="text" placeholder="" class="form-control mx-auto d-block">
-                                                </div>
-                                            </div>
-                                            <div class="p-1 mx-auto">
-                                                <p>Código de seguridad:</p>
-                                                <div>
-                                                    <input type="text" placeholder="" class="form-control mx-auto d-block">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-floating mx-auto d-flex m-1">
-                                            <input type="text" id="País" name="País" placeholder="" class="form-control">
-                                            <label for="País" style="opacity: 50%;">Ingrese su País</label>
-                                        </div>
-                                        <div class="form-floating mx-auto d-flex m-1">
-                                            <input type="text" id="NombreTitular" name="NombreTitular" placeholder="" class="form-control">
-                                            <label for="NombreTitular" style="opacity: 50%;">Ingrese nombre de su titular</label>
-                                        </div>
-                                        <div class="form-floating mx-auto d-flex m-0">
-                                            <p class="my-auto p-1">Envío a domicilio</p>
-                                            <input type="checkbox" id="despacho" name="despacho" value="doom">
-                                        </div>
-                                        <div class="form-floating mx-auto d-block m-2">
-                                            <input type="submit" value="Pagar" class="btn btn-outline-success mx-auto">
-                                        </div>
-                                    </form>
-                                    <script>
-                                        $("#Pago").validate();
-                                    </script>
-                                    <div class="col mx-auto shadow-lg text-center mt-5 d-block">
-                                        <a href="{% url 'tienda' %}">
-                                            <button class="btn btn-outline-danger">
-                                                Cancelar
-                                            </button>
-                                        </a>
+                                            {% endif %}
+                                            {% endif %}
+                                        {% endfor %}
+                                        {% endif %}
                                     </div>
                                 </div>
-                            </div>
-                        {% else %}
-                            <div class="carrito-item mb-3">
-                                <h3 style="opacity: 50%;">Carrito vacío</h3>
-                            </div>
-                        {% endif %}
-                    </div>
+                                <div class="col">
+                                    <div class="col-12 mx-auto shadow-lg p-2" style="border-radius: 8px;">
+                                        <div>
+                                            <h4>Formulario de pago</h4>
+                                        </div>
+                                        <form action="{% url 'pagarCart' %}" id="Pago" name="Pago" method="POST" class="col mx-auto shadow-lg text-center mt-3 p-3">
+                                            {% csrf_token %}
+                                            <div class="form-floating mx-auto d-flex m-0">
+                                                <p class="my-auto p-1">Seleccione una forma de pago:</p>
+                                                <select name="formaDePago" id="formaDePago">
+                                                    {% for forma in formasPago %}
+                                                        {% if forma.forma != 'Efectivo' %}
+                                                            <option value="{{forma.id_forma_pago}}">{{forma.forma}}</option>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                            <br>
+                                            <div class="form-floating mx-auto d-flex m-1">
+                                                <input type="text" id="numTarjeta" name="numTarjeta" placeholder="" class="form-control">
+                                                <label for="numTarjeta" style="opacity: 50%;">Ingrese el número de la tarjeta</label>
+                                            </div>
+                                            <div class="form-floating mx-auto d-flex m-1">
+                                                <div class="p-1 mx-auto">
+                                                    <p>Fecha de caducidad:</p>
+                                                    <div>
+                                                        <input type="text" placeholder="" class="form-control mx-auto d-block">
+                                                    </div>
+                                                </div>
+                                                <div class="p-1 mx-auto">
+                                                    <p>Código de seguridad:</p>
+                                                    <div>
+                                                        <input type="text" placeholder="" class="form-control mx-auto d-block">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-floating mx-auto d-flex m-1">
+                                                <input type="text" id="País" name="País" placeholder="" class="form-control">
+                                                <label for="País" style="opacity: 50%;">Ingrese su País</label>
+                                            </div>
+                                            <div class="form-floating mx-auto d-flex m-1">
+                                                <input type="text" id="NombreTitular" name="NombreTitular" placeholder="" class="form-control">
+                                                <label for="NombreTitular" style="opacity: 50%;">Ingrese nombre de su titular</label>
+                                            </div>
+                                            <div class="form-floating mx-auto d-flex m-0">
+                                                <p class="my-auto p-1">Envío a domicilio</p>
+                                                <input type="checkbox" id="despacho" name="despacho" value="doom">
+                                            </div>
+                                            <div class="form-floating mx-auto d-block m-2">
+                                                <input type="submit" value="Pagar" class="btn btn-outline-success mx-auto">
+                                            </div>
+                                        </form>
+                                        <script>
+                                            $("#Pago").validate();
+                                        </script>
+                                        <div class="col mx-auto shadow-lg text-center mt-5 d-block">
+                                            <a href="{% url 'tienda' %}">
+                                                <button class="btn btn-outline-danger">
+                                                    Cancelar
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="carrito-item mb-3">
+                                    <h3 style="opacity: 50%;">Carrito vacío</h3>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% else %}
+                        <div class="row">
+                            {% if message%}
+                                <div class="alert alert-primary w-100% mx-auto p-5">
+                                    {{message}}
+                                </div>
+                                <div>
+                                    <a href="{% url 'tienda' %}">
+                                        <button class="btn btn-outline-primary">
+                                            Volver a la Tienda
+                                        </button>
+                                    </a>
+                                </div>
+                            {% endif%}
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
