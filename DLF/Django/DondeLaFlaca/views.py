@@ -287,6 +287,7 @@ def crud_ventas(request,pk):
     else:
         pago = Pago.objects.all().filter(rut = rut)
     detalle = Detalle.objects.all()
+    despachos = Despacho.objects.all()
     if c:
         context={
             "f":f,
@@ -296,7 +297,8 @@ def crud_ventas(request,pk):
             "tipoproductos":tipoproducto,
             "productos":producto,
             "pagos":pago,
-            "detalles":detalle
+            "detalles":detalle,
+            "despachos":despachos
         }
     else:
         context={
@@ -308,7 +310,8 @@ def crud_ventas(request,pk):
             "tipoproductos":tipoproducto,
             "productos":producto,
             "pagos":pago,
-            "detalles":detalle
+            "detalles":detalle,
+            "despachos":despachos
         }
     return render(request, 'pages/Crud/despliegue/crud_ventas.html', context)
 """ ------------------------------------------------------------------------------------ """
